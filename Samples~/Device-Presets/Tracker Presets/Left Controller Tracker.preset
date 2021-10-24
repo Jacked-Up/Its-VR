@@ -1,0 +1,207 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Left Controller Tracker
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 91b25c4fd0f204945948f6ecb8284287, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_Name
+    value: Tracker Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_ExpectedControlType
+    value: Vector3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_Id
+    value: b29d93dd-f5ba-4be5-ae5f-de451af5ee5d
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_SingletonActionBindings.Array.data[0].m_Id
+    value: c7400e1f-2dea-47f5-8cfa-9574e7a3187f
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/devicePosition
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Tracker Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerPosition.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_Name
+    value: Tracker Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_ExpectedControlType
+    value: Quaternion
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_Id
+    value: 0e216913-82c5-46c3-b847-19e5fe421499
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_SingletonActionBindings.Array.data[0].m_Id
+    value: cc5be72d-208e-436c-a8d8-0b9095bbf4b2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/deviceRotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Tracker Rotation
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackerRotation.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_Name
+    value: Tracking Status
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_ExpectedControlType
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_Id
+    value: 54357727-ce39-4edb-9212-0d0b57753340
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_SingletonActionBindings.Array.data[0].m_Id
+    value: 04d1f709-2e64-4b76-ab63-7e7827b80cca
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/isTracked
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Tracking Status
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: trackingStatus.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []
