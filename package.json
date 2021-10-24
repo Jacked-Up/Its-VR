@@ -1,8 +1,8 @@
 {
   "name": "com.jacked-up-studios.its-vr",
-  "version": "0.0.0",
   "displayName": "It's VR",
   "description": "A tool for developing virtual reality applications.",
+  "version": "0.0.0",
   "unity": "2020.3",
   "unityRelease": "0b14",
   "dependencies": {
@@ -14,10 +14,11 @@
     "type": "git"
   },
   "keywords": [
-    "tools",
-    "virtual reality"
+    "tool",
+    "virtual reality",
+    "vr",
+    "plugin"
   ],
-  "type": "tool",
   "author": {
     "name": "Jacked Up Studios",
     "email": "JackRandolph@JackedUpStudios.com",
@@ -27,12 +28,12 @@
     {
       "displayName": "Device Presets",
       "description": "Contains tracker references and input references presets.",
-      "path": "Samples/Device-Presets"
+      "path": "Samples~/Device-Presets"
     },
     {
       "displayName": "Sample Implementations",
       "description": "A bunch of It's VR sample implementations for creating a VR game.",
-      "path": "Samples/Sample-Implementations"
+      "path": "Samples~/Sample-Implementations"
     }
   ]
 }
