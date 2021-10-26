@@ -1,10 +1,12 @@
+// This script was updated on 10/26/2021 by Jack Randolph.
+
 using ItsVR.Player;
 using UnityEngine;
 
 namespace ItsVR_Samples.Locomotion {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(VRRig))]
-    [AddComponentMenu("It's VR/Samples/Locomotion/Snap Turn")]
+    [AddComponentMenu("It's VR/Samples/Locomotion/Snap Turn (Sample)")]
     public class VRSnapTurn : MonoBehaviour {
         #region Variables
 
@@ -47,6 +49,9 @@ namespace ItsVR_Samples.Locomotion {
         private void Update() {
             if (inputController == null) return;
             
+            // The debounce feature allows the player to hold the joystick to one side
+            // and snap spin over some time. This makes it easier to spin a lot without
+            // flicking the joystick a bunch of times (which can be annoying and tiring).
             if (_frameTick > debounceTime) {
                 if (inputController.inputReference.JoystickPosition.x > 0.5f) {
                     _vrRig.RotateRig(turnAngle);
@@ -61,8 +66,13 @@ namespace ItsVR_Samples.Locomotion {
                     _frameTick = 0;
                 }
             }
-            else 
+            else {
+                // If the frame tick counter if below the debounce time, we should count
+                // up the frame tick until it is greater than the debounce time. This
+                // feature prevents the player from spinning every single frame and causing
+                // motion sickness.
                 _frameTick += Time.deltaTime;
+            }
         }
     }
 }
