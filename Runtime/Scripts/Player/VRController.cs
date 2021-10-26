@@ -1,3 +1,6 @@
+// This script was updated on 10/26/2021 by Jack Randolph.
+// Documentation: https://jackedupstudios.com/vr-controller
+
 using ItsVR.Scriptables;
 using UnityEngine;
 
@@ -9,9 +12,9 @@ namespace ItsVR.Player {
         #region Variables
         
         /// <summary>
-        /// |Optional| The input reference which contains all the VR input bindings for the controller.
+        /// The input reference which contains all the VR input bindings for the controller.
         /// </summary>
-        [Tooltip("|Optional| The input reference which contains all the VR input bindings for the controller.")]
+        [Tooltip("The input reference which contains all the VR input bindings for the controller.")]
         public VRInputReferences inputReference;
 
         /// <summary>

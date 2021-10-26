@@ -1,3 +1,6 @@
+// This script was updated on 10/26/2021 by Jack Randolph.
+// Documentation: none
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
