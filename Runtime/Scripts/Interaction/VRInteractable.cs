@@ -1,3 +1,6 @@
+// This script was updated on 10/26/2021 by Jack Randolph.
+// Documentation: https://jackedupstudios.com/vr-interactable
+
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,7 +10,7 @@ namespace ItsVR.Interaction {
         #region Variables
 
         /// <summary>
-        /// All interactors currently interacting with the interactable.
+        /// A list containing all interactors currently interacting with the interactable.
         /// </summary>
         [HideInInspector]
         public List<AssociatedInteractor> associatedInteractors = new List<AssociatedInteractor>();
@@ -80,11 +83,20 @@ namespace ItsVR.Interaction {
         /// <param name="interactor"></param>
         /// <param name="interactableAttachmentPoint"></param>
         public virtual void Associate(VRInteractor interactor, Transform interactableAttachmentPoint) {
+            // If the interactor the developer attempted to associate with this
+            // interactable is already associated, the script will debug and let
+            // them know.
             if (IsInteractorAssociated(interactor)) 
                 Debug.LogError("[VR Interactable] This interactor is already associated with the interactable.", interactor);
 
+            // If the attachment point which the developer attempted to associate
+            // with the interactable is already associated, it can cause issues in
+            // many cases.
             if (IsAttachmentPointAssociated(interactableAttachmentPoint)) 
                 Debug.LogError("[VR Interactable] This interactable attachment point is already associated with the interactable.", interactableAttachmentPoint);
+            
+            // We're associating with the interactor here.
+            interactor.Associate(this);
             
             var addingInteractor = new AssociatedInteractor {
                 interactor = interactor,
@@ -99,11 +111,16 @@ namespace ItsVR.Interaction {
         /// Dissociates the interactor and interactable attachment point from the interactable.
         /// </summary>
         public virtual void Dissociate(VRInteractor interactor) {
+            // If the interactor was not first associated with the interactable
+            // then there is nothing to actually dissociate. 
             if (!IsInteractorAssociated(interactor)) {
                 Debug.LogError("[VR Interactable] This interactor was not associated with the interactable.", interactor);
                 return;
             }
 
+            // We're dissociating from the interactor here.
+            interactor.Dissociate(this);
+            
             var removingInteractor = associatedInteractors.FirstOrDefault(associatedInteractor => associatedInteractor.interactor == interactor);
             associatedInteractors.Remove(removingInteractor);
             Dissociated?.Invoke();

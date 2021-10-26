@@ -1,4 +1,6 @@
-using Codice.Client.Common;
+// This script was updated on 10/26/2021 by Jack Randolph.
+// Documentation: https://jackedupstudios.com/vr-rig
+
 using UnityEngine;
 
 namespace ItsVR.Player {
@@ -60,7 +62,7 @@ namespace ItsVR.Player {
         }
         
         /// <summary>
-        /// The heads position. Equivalent of 'head.position'.
+        /// The heads world position. Equivalent of 'head.position'.
         /// </summary>
         public Vector3 HeadPosition => head == null ? Vector3.zero : head.position;
 
@@ -70,14 +72,24 @@ namespace ItsVR.Player {
         public Vector3 HeadLocalPosition => head == null ? Vector3.zero : head.localPosition;
 
         /// <summary>
-        /// The estimated position of the feet. (This is the position directly below the head to the bottom of the rigs bounding box).
+        /// The estimated world position of the hip. This is the point directly in the middle of the head and the bottom of the bounding box.
         /// </summary>
-        public Vector3 FeetPosition => head == null ? Vector3.zero : new Vector3(head.position.x, transform.position.y, head.position.z);
+        public Vector3 HipPosition => head == null ? Vector3.zero : new Vector3(HeadPosition.x, transform.position.y + Height / 2, HeadPosition.z);
+
+        /// <summary>
+        /// The estimated local position of the hip. This is the point directly in the middle of the head and the bottom of the bounding box.
+        /// </summary>
+        public Vector3 HipLocalPosition => head == null ? Vector3.zero : new Vector3(HeadLocalPosition.x, Height / 2, HeadLocalPosition.z);
         
         /// <summary>
-        /// The estimated position of the feet. (This is the position directly below the head to the bottom of the rigs bounding box).
+        /// The estimated world position of the feet. (This is the position directly below the head to the bottom of the rigs bounding box).
         /// </summary>
-        public Vector3 FeetLocalPosition => head == null ? Vector3.zero : new Vector3(head.localPosition.x, transform.position.y, head.localPosition.z);
+        public Vector3 FeetPosition => head == null ? Vector3.zero : new Vector3(HeadPosition.x, transform.position.y, HeadPosition.z);
+        
+        /// <summary>
+        /// The estimated local position of the feet. (This is the position directly below the head to the bottom of the rigs bounding box).
+        /// </summary>
+        public Vector3 FeetLocalPosition => head == null ? Vector3.zero : new Vector3(HeadLocalPosition.x, 0f, HeadLocalPosition.z);
 
         /// <summary>
         /// Invoked when the rig is rotated.
@@ -133,17 +145,12 @@ namespace ItsVR.Player {
         #region Editor
 
         private void OnDrawGizmos() {
-            var selfTransform = transform;
-            var selfPosition = selfTransform.position;
-            var selfScale = selfTransform.lossyScale;
             var heightYOffset = heightMode == HeightModes.Float ? heightOffset : 1.75f;
             
-            var headPosition = Vector3.Scale(head != null ? head.transform.position : Vector3.zero, selfScale);
-            var feetPosition = Vector3.Scale(Application.isPlaying && _headTracker != null ? new Vector3(_headTracker.trackerReference.TrackerPosition.x, selfPosition.y, _headTracker.trackerReference.TrackerPosition.z) : selfPosition, selfScale);
-
             // Head setup.
             if (head != null) {
-                head.transform.position = Vector3.Scale(new Vector3(selfPosition.x, selfPosition.y + heightYOffset, selfPosition.z), transform.lossyScale);
+                if (!Application.isPlaying)
+                    head.transform.position = Vector3.Scale(new Vector3(transform.position.x, transform.position.y + heightYOffset, transform.position.z), transform.lossyScale);
 
                 var headCol = head.GetComponent<SphereCollider>();
                 if (headCol != null) 
@@ -161,38 +168,35 @@ namespace ItsVR.Player {
 
             // Draw boundary box.
             Gizmos.color = Color.green;
-            Gizmos.DrawWireCube(Vector3.Scale(new Vector3(selfPosition.x, selfPosition.y + (heightYOffset + 1.2f) / 2, selfPosition.z), selfScale), Vector3.Scale(new Vector3(3f, (heightYOffset + 1.2f), 3f), selfScale));
+            Gizmos.DrawWireCube(Vector3.Scale(new Vector3(transform.position.x, transform.position.y + (heightYOffset + 1.2f) / 2, transform.position.z), transform.lossyScale), Vector3.Scale(new Vector3(3f, (heightYOffset + 1.2f), 3f), transform.lossyScale));
 
             // Draw vectors.
             if (!Application.isPlaying) {
                 Gizmos.color = Color.blue;
-                Gizmos.DrawRay(selfPosition, selfTransform.forward);   
+                Gizmos.DrawRay(FeetPosition, transform.forward);   
             }
             
             // Draw body.
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(feetPosition, headPosition);
+            Gizmos.DrawLine(HeadPosition, FeetPosition);
         }
 
         private void OnDrawGizmosSelected() {
-            var selfTransform = transform;
-            var selfPosition = selfTransform.position;
-            var selfScale = selfTransform.lossyScale;
-            var heightYOffset = heightMode == HeightModes.Float ? this.heightOffset : 1.75f;
+            var heightYOffset = heightMode == HeightModes.Float ? heightOffset : 1.75f;
 
             // Draw boundary box.
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(Vector3.Scale(new Vector3(selfPosition.x, selfPosition.y + (heightYOffset + 1.2f) / 2, selfPosition.z), selfScale), Vector3.Scale(new Vector3(3f, (heightYOffset + 1.2f), 3f), selfScale));
+            Gizmos.DrawWireCube(Vector3.Scale(new Vector3(transform.position.x, transform.position.y + (heightYOffset + 1.2f) / 2, transform.position.z), transform.lossyScale), Vector3.Scale(new Vector3(3f, (heightYOffset + 1.2f), 3f), transform.lossyScale));
            
             // Draw grid.
             Gizmos.color = Color.green;
             for (var i = 0; i < 4; i++) {
-                Gizmos.DrawLine(Vector3.Scale(new Vector3(selfPosition.x + 3, selfPosition.y, selfPosition.z + i), selfScale), Vector3.Scale(new Vector3(selfPosition.x + -3, selfPosition.y, selfPosition.z + i), selfScale));
-                Gizmos.DrawLine(Vector3.Scale(new Vector3(selfPosition.x + 3, selfPosition.y, selfPosition.z + -i), selfScale),  Vector3.Scale(new Vector3(selfPosition.x + -3, selfPosition.y, selfPosition.z + -i), selfScale));
+                Gizmos.DrawLine(Vector3.Scale(new Vector3(transform.position.x + 3, transform.position.y, transform.position.z + i), transform.lossyScale), Vector3.Scale(new Vector3(transform.position.x + -3, transform.position.y, transform.position.z + i), transform.lossyScale));
+                Gizmos.DrawLine(Vector3.Scale(new Vector3(transform.position.x + 3, transform.position.y, transform.position.z + -i), transform.lossyScale),  Vector3.Scale(new Vector3(transform.position.x + -3, transform.position.y, transform.position.z + -i), transform.lossyScale));
             }
             for (var i = 0; i < 4; i++) {
-                Gizmos.DrawLine(Vector3.Scale(new Vector3(selfPosition.x + i, selfPosition.y, selfPosition.z + 3), selfScale), Vector3.Scale(new Vector3(selfPosition.x + i, selfPosition.y, selfPosition.z + -3), selfScale));
-                Gizmos.DrawLine(Vector3.Scale(new Vector3(selfPosition.x + -i, selfPosition.y, selfPosition.z + 3), selfScale),  Vector3.Scale(new Vector3(selfPosition.x + -i, selfPosition.y, selfPosition.z + -3), selfScale));
+                Gizmos.DrawLine(Vector3.Scale(new Vector3(transform.position.x + i, transform.position.y, transform.position.z + 3), transform.lossyScale), Vector3.Scale(new Vector3(transform.position.x + i, transform.position.y, transform.position.z + -3), transform.lossyScale));
+                Gizmos.DrawLine(Vector3.Scale(new Vector3(transform.position.x + -i, transform.position.y, transform.position.z + 3), transform.lossyScale),  Vector3.Scale(new Vector3(transform.position.x + -i, transform.position.y, transform.position.z + -3), transform.lossyScale));
             }
         }
 

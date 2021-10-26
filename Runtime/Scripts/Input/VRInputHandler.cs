@@ -1,10 +1,14 @@
+// This script was updated on 10/26/2021 by Jack Randolph.
+// This script is incomplete.
+// Documentation: https://jackedupstudios.com/vr-input-handler
+
 using ItsVR.Scriptables;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ItsVR.Input {
     [DisallowMultipleComponent]
-    [AddComponentMenu("It's VR/Input/VR Input Handler")]
+    [AddComponentMenu("It's VR/Input/VR Input Handler (Incomplete)")]
     public class VRInputHandler : MonoBehaviour {
         #region Variables
 

@@ -1,3 +1,6 @@
+// This script was updated on 10/26/2021 by Jack Randolph.
+// Documentation: https://jackedupstudios.com/vr-interactor
+
 using UnityEngine;
 
 namespace ItsVR.Interaction {
@@ -35,9 +38,11 @@ namespace ItsVR.Interaction {
         /// </summary>
         /// <param name="interactable"></param>
         public virtual void Associate(VRInteractable interactable) {
+            // We must dissociate the associated interactor before we
+            // can associate a new interactor.
             if (associatedInteractable != null) 
                 Dissociate(associatedInteractable);
-            
+
             associatedInteractable = interactable;
             Associated?.Invoke();
         }
@@ -47,6 +52,9 @@ namespace ItsVR.Interaction {
         /// </summary>
         /// <param name="interactable"></param>
         public virtual void Dissociate(VRInteractable interactable) {
+            // If the interactable is not associated with the interactor,
+            // the developer attempted to dissociate an interactable which
+            // currently is not associated.
             if (interactable != associatedInteractable) {
                 Debug.LogError("[VR Interactor] This interactable couldn't be dissociated because it wasn't associated with the interactor.", interactable);
                 return;
