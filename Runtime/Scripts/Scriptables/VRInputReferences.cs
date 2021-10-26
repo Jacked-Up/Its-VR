@@ -1,10 +1,10 @@
 // This script was updated on 10/26/2021 by Jack Randolph.
-// Documentation: none
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ItsVR.Scriptables {
+    [HelpURL("https://jackedupstudios.com/its-vr-documentation-1#b47abff1-8a0b-4eb6-b03c-3617ba2beb61")]
     [CreateAssetMenu(menuName = "It's VR/Input/VR Input Reference", fileName = "My VR Inputs")]
     public class VRInputReferences : ScriptableObject {
         #region Variables

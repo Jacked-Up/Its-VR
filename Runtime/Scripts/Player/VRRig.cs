@@ -1,10 +1,10 @@
 // This script was updated on 10/26/2021 by Jack Randolph.
-// Documentation: https://jackedupstudios.com/vr-rig
 
 using UnityEngine;
 
 namespace ItsVR.Player {
     [DisallowMultipleComponent]
+    [HelpURL("https://jackedupstudios.com/vr-rig")]
     [AddComponentMenu("It's VR/Player/VR Rig")]
     public class VRRig : MonoBehaviour {
         #region Variables

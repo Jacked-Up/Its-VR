@@ -1,9 +1,9 @@
 // This script was updated on 10/26/2021 by Jack Randolph.
-// Documentation: https://jackedupstudios.com/vr-interactor
 
 using UnityEngine;
 
 namespace ItsVR.Interaction {
+    [HelpURL("https://jackedupstudios.com/vr-interactor")]
     public class VRInteractor : MonoBehaviour {
         #region Variables
 

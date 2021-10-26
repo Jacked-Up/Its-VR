@@ -1,5 +1,4 @@
 // This script was updated on 10/26/2021 by Jack Randolph.
-// Documentation: https://jackedupstudios.com/vr-controller
 
 using ItsVR.Scriptables;
 using UnityEngine;
@@ -7,6 +6,7 @@ using UnityEngine;
 namespace ItsVR.Player {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(VRTracker))]
+    [HelpURL("https://jackedupstudios.com/vr-controller")]
     [AddComponentMenu("It's VR/Player/VR Controller")]
     public class VRController : MonoBehaviour {
         #region Variables

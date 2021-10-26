@@ -1,6 +1,5 @@
 // This script was updated on 10/26/2021 by Jack Randolph.
 // This script is incomplete.
-// Documentation: https://jackedupstudios.com/vr-input-component
 
 using ItsVR.Scriptables;
 using UnityEngine;
@@ -9,6 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace ItsVR.Input {
     [DisallowMultipleComponent]
+    [HelpURL("https://jackedupstudios.com/vr-input-component")]
     [AddComponentMenu("It's VR/Input/VR Input Component (Incomplete)")]
     public class VRInputComponent : MonoBehaviour {
         #region Variables

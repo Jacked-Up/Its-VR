@@ -1,10 +1,10 @@
 // This script was updated on 10/26/2021 by Jack Randolph.
-// Documentation: none
 
 using ItsVR.Player;
 using UnityEngine;
 
 namespace ItsVR {
+    [HelpURL("https://jackedupstudios.com/its-vr-documentation-1#b47abff1-8a0b-4eb6-b03c-3617ba2beb61")]
     public static class ItsVRManager {
         #region Variables
 

@@ -1,11 +1,11 @@
 // This script was updated on 10/26/2021 by Jack Randolph.
-// Documentation: https://jackedupstudios.com/vr-tracker
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ItsVR.Player {
     [DisallowMultipleComponent]
+    [HelpURL("https://jackedupstudios.com/vr-tracker")]
     [AddComponentMenu("It's VR/Player/VR Tracker")]
     public class VRTracker : MonoBehaviour {
         #region Variables
