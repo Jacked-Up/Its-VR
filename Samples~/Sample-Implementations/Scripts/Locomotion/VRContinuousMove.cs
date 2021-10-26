@@ -132,7 +132,7 @@ namespace ItsVR_Samples.Locomotion {
             if (!IsGrounded) 
                 velocity.y += Physics.gravity.y * Time.deltaTime;
             else 
-                velocity = new Vector3(0, -5, 0);
+                velocity = new Vector3(0, -2, 0);
 
             // Lastly, we just apply the physics to the player.
             _characterController.Move(velocity * Time.deltaTime);
