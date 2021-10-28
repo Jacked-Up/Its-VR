@@ -47,11 +47,15 @@ namespace ItsVR_Samples.Locomotion {
         [Tooltip("The color displayed when the player cannot teleport.")]
         public Gradient invalidTeleport;
 
+        /*
+        
         /// <summary>
         /// The maximum distance the player can travel per teleport.
         /// </summary>
         [Tooltip("The maximum distance the player can travel per teleport.")]
         public float maxTravelDistance = 10f;
+        
+        */
         
         /// <summary>
         /// Number of segments the line renderer calculates. More means it looks smoother.
