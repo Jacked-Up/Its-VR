@@ -41,7 +41,7 @@ namespace ItsVR_Samples.Locomotion {
 
         private void OnEnable() {
             if (inputController == null)
-                Debug.LogError("[VR Snap Turn] An input controller must be referenced for input to work.", this);
+                Debug.LogError("[VR Continuous Move] No input controller was referenced. (I have no way to receive input)", this);
 
             _vrRig = GetComponent<VRRig>();
         }
