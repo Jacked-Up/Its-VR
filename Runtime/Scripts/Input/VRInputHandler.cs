@@ -1,4 +1,4 @@
-// This script was updated on 10/26/2021 by Jack Randolph.
+// This script was updated on 10/28/2021 by Jack Randolph.
 // This script is incomplete.
 
 using ItsVR.Scriptables;
@@ -91,182 +91,167 @@ namespace ItsVR.Input {
         /// <summary>
         /// How far the right controller trigger is depressed. (From 0 to 1)
         /// </summary>
-        public static float RightHandTriggerDepress => _self.rightHandInput.TriggerDepress;
+        public static float RightHandTriggerDepress => _self.rightHandInput.universalInputs.TriggerDepress;
         
         /// <summary>
         /// How far the left controller trigger is depressed. (From 0 to 1)
         /// </summary>
-        public static float LeftHandTriggerDepress => _self.leftHandInput.TriggerDepress;
+        public static float LeftHandTriggerDepress => _self.leftHandInput.universalInputs.TriggerDepress;
         
         /// <summary>
         /// How far the dominate controller trigger is depressed. (From 0 to 1)
         /// </summary>
-        public static float DominateHandTriggerDepress => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.TriggerDepress : _self.leftHandInput.TriggerDepress;
+        public static float DominateHandTriggerDepress => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.TriggerDepress : _self.leftHandInput.universalInputs.TriggerDepress;
         
         /// <summary>
         /// If the right controllers trigger is pressed.
         /// </summary>
-        public static bool RightHandTriggerPressed => _self.rightHandInput.TriggerPressed;
+        public static bool RightHandTriggerPressed => _self.rightHandInput.universalInputs.TriggerPressed;
         
         /// <summary>
         /// If the left controllers trigger is pressed.
         /// </summary>
-        public static bool LeftHandTriggerPressed => _self.leftHandInput.TriggerPressed;
+        public static bool LeftHandTriggerPressed => _self.leftHandInput.universalInputs.TriggerPressed;
         
         /// <summary>
         /// If the dominate controllers trigger is pressed.
         /// </summary>
-        public static bool DominateHandTriggerPressed => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.TriggerPressed : _self.leftHandInput.TriggerPressed;
+        public static bool DominateHandTriggerPressed => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.TriggerPressed : _self.leftHandInput.universalInputs.TriggerPressed;
         
         /// <summary>
         /// How far the right controller grip is depressed. (From 0 to 1)
         /// </summary>
-        public static float RightHandGripDepress => _self.rightHandInput.GripDepress;
+        public static float RightHandGripDepress => _self.rightHandInput.universalInputs.GripDepress;
         
         /// <summary>
         /// How far the left controller grip is depressed. (From 0 to 1)
         /// </summary>
-        public static float LeftHandGripDepress => _self.leftHandInput.GripDepress;
+        public static float LeftHandGripDepress => _self.leftHandInput.universalInputs.GripDepress;
         
         /// <summary>
         /// How far the dominate controller grip is depressed. (From 0 to 1)
         /// </summary>
-        public static float DominateHandGripDepress => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.GripDepress : _self.leftHandInput.GripDepress;
+        public static float DominateHandGripDepress => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.GripDepress : _self.leftHandInput.universalInputs.GripDepress;
 
         /// <summary>
         /// If the right controllers grip is pressed.
         /// </summary>
-        public static bool RightHandGripPressed => _self.rightHandInput.GripPressed;
+        public static bool RightHandGripPressed => _self.rightHandInput.universalInputs.GripPressed;
         
         /// <summary>
         /// If the left controllers grip is pressed.
         /// </summary>
-        public static bool LeftHandGripPressed => _self.leftHandInput.GripPressed;
+        public static bool LeftHandGripPressed => _self.leftHandInput.universalInputs.GripPressed;
         
         /// <summary>
         /// If the dominate controllers grip is pressed.
         /// </summary>
-        public static bool DominateHandGripPressed => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.GripPressed : _self.leftHandInput.GripPressed;
+        public static bool DominateHandGripPressed => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.GripPressed : _self.leftHandInput.universalInputs.GripPressed;
         
         /// <summary>
         /// Position of the joystick on the right controller.
         /// </summary>
-        public static Vector2 RightHandJoystickPosition => _self.rightHandInput.JoystickPosition;
+        public static Vector2 RightHandJoystickPosition => _self.rightHandInput.universalInputs.JoystickPosition;
         
         /// <summary>
         /// Position of the joystick on the left controller.
         /// </summary>
-        public static Vector2 LeftHandJoystickPosition => _self.leftHandInput.JoystickPosition;
+        public static Vector2 LeftHandJoystickPosition => _self.leftHandInput.universalInputs.JoystickPosition;
         
         /// <summary>
         /// Position of the joystick on the dominate controller.
         /// </summary>
-        public static Vector2 DominateHandJoystickPosition => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.JoystickPosition : _self.leftHandInput.JoystickPosition;
+        public static Vector2 DominateHandJoystickPosition => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.JoystickPosition : _self.leftHandInput.universalInputs.JoystickPosition;
         
         /// <summary>
         /// If the right controllers joystick is pressed.
         /// </summary>
-        public static bool RightHandJoystickPressed => _self.rightHandInput.JoystickPressed;
+        public static bool RightHandJoystickPressed => _self.rightHandInput.universalInputs.JoystickPressed;
         
         /// <summary>
         /// If the left controllers joystick is pressed.
         /// </summary>
-        public static bool LeftHandJoystickPressed => _self.leftHandInput.JoystickPressed;
+        public static bool LeftHandJoystickPressed => _self.leftHandInput.universalInputs.JoystickPressed;
         
         /// <summary>
         /// If the dominate controllers joystick is pressed.
         /// </summary>
-        public static bool DominateHandJoystickPressed => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.JoystickPressed : _self.leftHandInput.JoystickPressed;
+        public static bool DominateHandJoystickPressed => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.JoystickPressed : _self.leftHandInput.universalInputs.JoystickPressed;
         
         /// <summary>
         /// If the right controllers joystick is touched.
         /// </summary>
-        public static bool RightHandJoystickTouched => _self.rightHandInput.JoystickTouched;
+        public static bool RightHandJoystickTouched => _self.rightHandInput.universalInputs.JoystickTouched;
         
         /// <summary>
         /// If the left controllers joystick is touched.
         /// </summary>
-        public static bool LeftHandJoystickTouched => _self.leftHandInput.JoystickTouched;
+        public static bool LeftHandJoystickTouched => _self.leftHandInput.universalInputs.JoystickTouched;
         
         /// <summary>
         /// If the dominate controllers joystick is touched.
         /// </summary>
-        public static bool DominateHandJoystickTouched => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.JoystickTouched : _self.leftHandInput.JoystickTouched;
+        public static bool DominateHandJoystickTouched => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.JoystickTouched : _self.leftHandInput.universalInputs.JoystickTouched;
 
         /// <summary>
         /// If the right controllers primary button is pressed.
         /// </summary>
-        public static bool RightHandPrimaryButtonPressed => _self.rightHandInput.PrimaryButtonPressed;
+        public static bool RightHandPrimaryButtonPressed => _self.rightHandInput.universalInputs.PrimaryButtonPressed;
         
         /// <summary>
         /// If the left controllers primary button is pressed.
         /// </summary>
-        public static bool LeftHandPrimaryButtonPressed => _self.leftHandInput.PrimaryButtonPressed;
+        public static bool LeftHandPrimaryButtonPressed => _self.leftHandInput.universalInputs.PrimaryButtonPressed;
         
         /// <summary>
         /// If the dominate controllers primary button is pressed.
         /// </summary>
-        public static bool DominateHandPrimaryButtonPressed => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.PrimaryButtonPressed : _self.leftHandInput.PrimaryButtonPressed;
+        public static bool DominateHandPrimaryButtonPressed => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.PrimaryButtonPressed : _self.leftHandInput.universalInputs.PrimaryButtonPressed;
         
         /// <summary>
         /// If the right controllers primary button is touched.
         /// </summary>
-        public static bool RightHandPrimaryButtonTouched => _self.rightHandInput.PrimaryButtonTouched;
+        public static bool RightHandPrimaryButtonTouched => _self.rightHandInput.universalInputs.PrimaryButtonTouched;
         
         /// <summary>
         /// If the left controllers primary button is touched.
         /// </summary>
-        public static bool LeftHandPrimaryButtonTouched => _self.leftHandInput.PrimaryButtonTouched;
+        public static bool LeftHandPrimaryButtonTouched => _self.leftHandInput.universalInputs.PrimaryButtonTouched;
         
         /// <summary>
         /// If the dominate controllers primary button is touched.
         /// </summary>
-        public static bool DominateHandPrimaryButtonTouched => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.PrimaryButtonTouched : _self.leftHandInput.PrimaryButtonTouched;
+        public static bool DominateHandPrimaryButtonTouched => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.PrimaryButtonTouched : _self.leftHandInput.universalInputs.PrimaryButtonTouched;
 
         /// <summary>
         /// If the right controllers secondary button is pressed.
         /// </summary>
-        public static bool RightHandSecondaryButtonPressed => _self.rightHandInput.SecondaryButtonPressed;
+        public static bool RightHandSecondaryButtonPressed => _self.rightHandInput.universalInputs.SecondaryButtonPressed;
         
         /// <summary>
         /// If the left controllers secondary button is pressed.
         /// </summary>
-        public static bool LeftHandSecondaryButtonPressed => _self.leftHandInput.SecondaryButtonPressed;
+        public static bool LeftHandSecondaryButtonPressed => _self.leftHandInput.universalInputs.SecondaryButtonPressed;
         
         /// <summary>
         /// If the dominate controllers secondary button is pressed.
         /// </summary>
-        public static bool DominateHandSecondaryButtonPressed => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.SecondaryButtonPressed : _self.leftHandInput.SecondaryButtonPressed;
+        public static bool DominateHandSecondaryButtonPressed => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.SecondaryButtonPressed : _self.leftHandInput.universalInputs.SecondaryButtonPressed;
         
         /// <summary>
         /// If the right controllers secondary button is touched.
         /// </summary>
-        public static bool RightHandSecondaryButtonTouched => _self.rightHandInput.SecondaryButtonTouched;
+        public static bool RightHandSecondaryButtonTouched => _self.rightHandInput.universalInputs.SecondaryButtonTouched;
         
         /// <summary>
         /// If the left controllers secondary button is touched.
         /// </summary>
-        public static bool LeftHandSecondaryButtonTouched => _self.leftHandInput.SecondaryButtonTouched;
+        public static bool LeftHandSecondaryButtonTouched => _self.leftHandInput.universalInputs.SecondaryButtonTouched;
         
         /// <summary>
         /// If the dominate controllers secondary button is touched.
         /// </summary>
-        public static bool DominateHandSecondaryButtonTouched => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.SecondaryButtonTouched : _self.leftHandInput.SecondaryButtonTouched;
-        
-        /// <summary>
-        /// If the right controllers thumbrest is touched.
-        /// </summary>
-        public static bool RightHandThumbrestTouched => _self.rightHandInput.ThumbrestTouched;
-        
-        /// <summary>
-        /// If the left controllers thumbrest is touched.
-        /// </summary>
-        public static bool LeftHandThumbrestTouched => _self.leftHandInput.ThumbrestTouched;
-        
-        /// <summary>
-        /// If the dominate controllers thumbrest is touched.
-        /// </summary>
-        public static bool DominateHandThumbrestTouched => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.ThumbrestTouched : _self.leftHandInput.ThumbrestTouched;
+        public static bool DominateHandSecondaryButtonTouched => ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right ? _self.rightHandInput.universalInputs.SecondaryButtonTouched : _self.leftHandInput.universalInputs.SecondaryButtonTouched;
         
         public delegate void InputEvent();
         private static VRInputHandler _self;
@@ -297,47 +282,43 @@ namespace ItsVR.Input {
             if (_alreadySubscribedToInputEvents) return;
             _alreadySubscribedToInputEvents = true;
             
-            rightHandInput.triggerPressed.performed += OnRightTriggerPressed;
-            rightHandInput.gripPressed.performed += OnRightGripPressed;
-            rightHandInput.joystickPressed.performed += OnRightJoystickPressed;
-            rightHandInput.joystickTouched.performed += OnRightJoystickTouched;
-            rightHandInput.primaryButtonPressed.performed += OnRightPrimaryButtonPressed;
-            rightHandInput.primaryButtonTouched.performed += OnRightPrimaryButtonTouched;
-            rightHandInput.secondaryButtonPressed.performed += OnRightSecondaryButtonPressed;
-            rightHandInput.secondaryButtonTouched.performed += OnRightSecondaryButtonTouched;
-            rightHandInput.thumbrestTouched.performed += OnRightThumbrestTouched;
+            rightHandInput.universalInputs.triggerPressed.performed += OnRightTriggerPressed;
+            rightHandInput.universalInputs.gripPressed.performed += OnRightGripPressed;
+            rightHandInput.universalInputs.joystickPressed.performed += OnRightJoystickPressed;
+            rightHandInput.universalInputs.joystickTouched.performed += OnRightJoystickTouched;
+            rightHandInput.universalInputs.primaryButtonPressed.performed += OnRightPrimaryButtonPressed;
+            rightHandInput.universalInputs.primaryButtonTouched.performed += OnRightPrimaryButtonTouched;
+            rightHandInput.universalInputs.secondaryButtonPressed.performed += OnRightSecondaryButtonPressed;
+            rightHandInput.universalInputs.secondaryButtonTouched.performed += OnRightSecondaryButtonTouched;
 
-            leftHandInput.triggerPressed.performed += OnLeftTriggerPressed;
-            leftHandInput.gripPressed.performed += OnLeftGripPressed;
-            leftHandInput.joystickPressed.performed += OnLeftJoystickPressed;
-            leftHandInput.joystickTouched.performed += OnLeftJoystickTouched;
-            leftHandInput.primaryButtonPressed.performed += OnLeftPrimaryButtonPressed;
-            leftHandInput.primaryButtonTouched.performed += OnLeftPrimaryButtonTouched;
-            leftHandInput.secondaryButtonPressed.performed += OnLeftSecondaryButtonPressed;
-            leftHandInput.secondaryButtonTouched.performed += OnLeftSecondaryButtonTouched;
-            leftHandInput.thumbrestTouched.performed += OnLeftThumbrestTouched;
+            leftHandInput.universalInputs.triggerPressed.performed += OnLeftTriggerPressed;
+            leftHandInput.universalInputs.gripPressed.performed += OnLeftGripPressed;
+            leftHandInput.universalInputs.joystickPressed.performed += OnLeftJoystickPressed;
+            leftHandInput.universalInputs.joystickTouched.performed += OnLeftJoystickTouched;
+            leftHandInput.universalInputs.primaryButtonPressed.performed += OnLeftPrimaryButtonPressed;
+            leftHandInput.universalInputs.primaryButtonTouched.performed += OnLeftPrimaryButtonTouched;
+            leftHandInput.universalInputs.secondaryButtonPressed.performed += OnLeftSecondaryButtonPressed;
+            leftHandInput.universalInputs.secondaryButtonTouched.performed += OnLeftSecondaryButtonTouched;
             
             if (ItsVRManager.DominateHand == ItsVRManager.DominateHands.Right) {
-                rightHandInput.triggerPressed.performed += OnDominateTriggerPressed;
-                rightHandInput.gripPressed.performed += OnDominateGripPressed;
-                rightHandInput.joystickPressed.performed += OnDominateJoystickPressed;
-                rightHandInput.joystickTouched.performed += OnDominateJoystickTouched;
-                rightHandInput.primaryButtonPressed.performed += OnDominatePrimaryButtonPressed;
-                rightHandInput.primaryButtonTouched.performed += OnDominatePrimaryButtonTouched;
-                rightHandInput.secondaryButtonPressed.performed += OnDominateSecondaryButtonPressed;
-                rightHandInput.secondaryButtonTouched.performed += OnDominateSecondaryButtonTouched;
-                rightHandInput.thumbrestTouched.performed += OnDominateThumbrestTouched;
+                rightHandInput.universalInputs.triggerPressed.performed += OnDominateTriggerPressed;
+                rightHandInput.universalInputs.gripPressed.performed += OnDominateGripPressed;
+                rightHandInput.universalInputs.joystickPressed.performed += OnDominateJoystickPressed;
+                rightHandInput.universalInputs.joystickTouched.performed += OnDominateJoystickTouched;
+                rightHandInput.universalInputs.primaryButtonPressed.performed += OnDominatePrimaryButtonPressed;
+                rightHandInput.universalInputs.primaryButtonTouched.performed += OnDominatePrimaryButtonTouched;
+                rightHandInput.universalInputs.secondaryButtonPressed.performed += OnDominateSecondaryButtonPressed;
+                rightHandInput.universalInputs.secondaryButtonTouched.performed += OnDominateSecondaryButtonTouched;
             }
             else {
-                leftHandInput.triggerPressed.performed += OnDominateTriggerPressed;
-                leftHandInput.gripPressed.performed += OnDominateGripPressed;
-                leftHandInput.joystickPressed.performed += OnDominateJoystickPressed;
-                leftHandInput.joystickTouched.performed += OnDominateJoystickTouched;
-                leftHandInput.primaryButtonPressed.performed += OnDominatePrimaryButtonPressed;
-                leftHandInput.primaryButtonTouched.performed += OnDominatePrimaryButtonTouched;
-                leftHandInput.secondaryButtonPressed.performed += OnDominateSecondaryButtonPressed;
-                leftHandInput.secondaryButtonTouched.performed += OnDominateSecondaryButtonTouched;
-                leftHandInput.thumbrestTouched.performed += OnDominateThumbrestTouched;
+                leftHandInput.universalInputs.triggerPressed.performed += OnDominateTriggerPressed;
+                leftHandInput.universalInputs.gripPressed.performed += OnDominateGripPressed;
+                leftHandInput.universalInputs.joystickPressed.performed += OnDominateJoystickPressed;
+                leftHandInput.universalInputs.joystickTouched.performed += OnDominateJoystickTouched;
+                leftHandInput.universalInputs.primaryButtonPressed.performed += OnDominatePrimaryButtonPressed;
+                leftHandInput.universalInputs.primaryButtonTouched.performed += OnDominatePrimaryButtonTouched;
+                leftHandInput.universalInputs.secondaryButtonPressed.performed += OnDominateSecondaryButtonPressed;
+                leftHandInput.universalInputs.secondaryButtonTouched.performed += OnDominateSecondaryButtonTouched;
             }
         }
 
@@ -366,12 +347,12 @@ namespace ItsVR.Input {
                 Debug.LogError("[VR Input Handler] Cannot disable left controller tracking inputs as no left hand tracker was referenced.", _self);
 
             if (_self.rightHandInput != null) 
-                _self.rightHandInput.DisableInputs();
+                _self.rightHandInput.DisableAllInputs();
             else 
                 Debug.LogError("[VR Input Handler] Cannot disable right controller inputs as no right controller inputs are referenced.", _self);
 
             if (_self.leftHandInput != null) 
-                _self.leftHandInput.DisableInputs();
+                _self.leftHandInput.DisableAllInputs();
             else 
                 Debug.LogError("[VR Input Handler] Cannot disable left controller inputs as no left controller inputs are referenced.", _self);
         }
@@ -586,34 +567,6 @@ namespace ItsVR.Input {
         public static event InputEvent DominateSecondaryButtonTouched;
         private static void OnDominateSecondaryButtonTouched(InputAction.CallbackContext callbackContext) {
             DominateSecondaryButtonTouched?.Invoke();
-        }
-
-        #endregion
-        
-        #region Thumbrest Events
-
-        /// <summary>
-        /// Invoked when the right thumbrest is touched.
-        /// </summary>
-        public static event InputEvent RightThumbrestTouched;
-        private static void OnRightThumbrestTouched(InputAction.CallbackContext callbackContext) {
-            RightThumbrestTouched?.Invoke();
-        }
-        
-        /// <summary>
-        /// Invoked when the left thumbrest is touched.
-        /// </summary>
-        public static event InputEvent LeftThumbrestTouched;
-        private static void OnLeftThumbrestTouched(InputAction.CallbackContext callbackContext) {
-            LeftThumbrestTouched?.Invoke();
-        }
-
-        /// <summary>
-        /// Invoked when the dominate thumbrest is touched.
-        /// </summary>
-        public static event InputEvent DominateThumbrestTouched;
-        private static void OnDominateThumbrestTouched(InputAction.CallbackContext callbackContext) {
-            DominateThumbrestTouched?.Invoke();
         }
 
         #endregion
