@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b25c4fd0f204945948f6ecb8284287, type: 3}
+  m_Name: Headset Tracker
+  m_EditorClassIdentifier: 
+  trackerPosition:
+    m_Name: Tracker Position
+    m_Type: 0
+    m_ExpectedControlType: Vector3
+    m_Id: b29d93dd-f5ba-4be5-ae5f-de451af5ee5d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 680e70b2-a09b-40a4-98c1-9289f7745823
+      m_Path: <XRHMD>/devicePosition
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Tracker Position
+      m_Flags: 0
+  trackerRotation:
+    m_Name: Tracker Rotation
+    m_Type: 0
+    m_ExpectedControlType: Quaternion
+    m_Id: 0e216913-82c5-46c3-b847-19e5fe421499
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0f3d55a4-ef58-4cb4-aaa8-a9c764f25f31
+      m_Path: <XRHMD>/deviceRotation
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Tracker Rotation
+      m_Flags: 0
+  trackerPointer:
+    m_Name: Tracker Pointer
+    m_Type: 0
+    m_ExpectedControlType: Vector3
+    m_Id: 20058a62-4cd4-45d6-aa22-b8461bc7c772
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b2f71473-4131-4d21-b246-6db099d9cca6
+      m_Path: <XRHMD>/centerEyePosition
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Tracker Pointer
+      m_Flags: 0
+  trackingStatus:
+    m_Name: Tracking Status
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: a07a43d7-6ba0-456b-8fce-39a8eb1da829
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a686dd97-d2e8-486a-b92c-45b419833f36
+      m_Path: <XRHMD>/isTracked
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Tracking Status
+      m_Flags: 0

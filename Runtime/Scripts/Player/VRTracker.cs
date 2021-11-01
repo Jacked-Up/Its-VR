@@ -1,11 +1,11 @@
-// This script was updated on 10/26/2021 by Jack Randolph.
-// Documentation: https://jackedupstudios.com/vr-tracker
+// This script was updated on 10/30/2021 by Jack Randolph.
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ItsVR.Player {
     [DisallowMultipleComponent]
+    [HelpURL("https://jackedupstudios.com/vr-tracker")]
     [AddComponentMenu("It's VR/Player/VR Tracker")]
     public class VRTracker : MonoBehaviour {
         #region Variables
@@ -28,6 +28,12 @@ namespace ItsVR.Player {
         [Tooltip("The frequency at which the tracker updates.")]
         public UpdateModes updateMode = UpdateModes.UpdateAndBeforeRender;
 
+        /// <summary>
+        /// If true, the tracker will draw a line to display its motion and speed. Note: Only draws in the editor.
+        /// </summary>
+        [SerializeField] [Tooltip("If true, the tracker will draw a line to display its motion and speed. Note: Only draws in the editor.")]
+        private bool drawTrackerMotion;
+        
         /// <summary>
         /// The position offset of the tracker.
         /// </summary>
@@ -68,6 +74,10 @@ namespace ItsVR.Player {
         public enum UpdateModes { UpdateAndBeforeRender, Update, BeforeRender }
         public enum TrackingConstraints { PositionAndRotation, RotationOnly, PositionOnly }
         public delegate void VRTrackerEvent();
+        private Vector3 _lastWorldPosition;
+        private Vector3 _lastLocalPosition;
+        private Quaternion _lastWorldRotation;
+        private Quaternion _lastLocalRotation;
 
         #endregion
         
@@ -89,6 +99,31 @@ namespace ItsVR.Player {
         private void Update() {
             if (updateMode == UpdateModes.Update || updateMode == UpdateModes.UpdateAndBeforeRender)
                 Track();
+
+#if UNITY_EDITOR
+            if (!drawTrackerMotion) return;
+            
+            Color color;
+            if (WorldSpeed > 5f) {
+                color = Color.red;
+            }
+            else if (WorldSpeed > 2f) {
+                color = Color.yellow;
+            }
+            else {
+                color = Color.green;
+            }
+            
+            Debug.DrawLine(_lastWorldPosition, transform.position, color, 5);
+#endif
+        }
+
+        private void LateUpdate() {
+            var self = transform;
+            _lastWorldPosition = self.position;
+            _lastLocalPosition = self.localPosition;
+            _lastWorldRotation = self.rotation;
+            _lastLocalRotation = self.localRotation;
         }
 
         /// <summary>
@@ -102,10 +137,8 @@ namespace ItsVR.Player {
             if (trackingConstraint == TrackingConstraints.PositionOnly || trackingConstraint == TrackingConstraints.PositionAndRotation)
                 self.localPosition = trackerReference.TrackerPosition + positionOffset;
             
-            // Warning! Doesn't apply the rotation to the object! (Unimplemented)
-            // Need to use 'rotationOffset'.
             if (trackingConstraint == TrackingConstraints.RotationOnly || trackingConstraint == TrackingConstraints.PositionAndRotation)
-               self.localRotation = trackerReference.TrackerRotation;
+                self.localRotation = Quaternion.Euler(trackerReference.TrackerRotation.eulerAngles + rotationOffset.eulerAngles);
             
             TrackerUpdated?.Invoke();
         }
@@ -125,5 +158,35 @@ namespace ItsVR.Player {
             IsPaused = false;
             TrackerResumed?.Invoke();
         }
+
+        /// <summary>
+        /// The speed of the tracker in world space.
+        /// </summary>
+        public float WorldSpeed => (transform.position - _lastWorldPosition).magnitude / Time.deltaTime;
+        
+        /// <summary>
+        /// The speed of the tracker in local space.
+        /// </summary>
+        public float LocalSpeed => (transform.localPosition - _lastLocalPosition).magnitude / Time.deltaTime;
+        
+        /// <summary>
+        /// The velocity of the tracker in world space.
+        /// </summary>
+        public Vector3 WorldVelocity => (transform.position - _lastWorldPosition) / Time.deltaTime;
+
+        /// <summary>
+        /// The velocity of the tracker in local space.
+        /// </summary>
+        public Vector3 LocalVelocity => (transform.localPosition - _lastLocalPosition) / Time.deltaTime;
+        
+        /// <summary>
+        /// The angular velocity of the tracker in world space.
+        /// </summary>
+        public Vector3 WorldAngularVelocity => (transform.rotation.eulerAngles - _lastWorldRotation.eulerAngles) / Time.deltaTime;
+
+        /// <summary>
+        /// The angular velocity of the tracker in local space.
+        /// </summary>
+        public Vector3 LocalAngularVelocity => (transform.localRotation.eulerAngles - _lastLocalRotation.eulerAngles) / Time.deltaTime;
     }
 }

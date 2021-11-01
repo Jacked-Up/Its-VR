@@ -1,6 +1,5 @@
 // This script was updated on 10/26/2021 by Jack Randolph.
 // This script is incomplete.
-// Documentation: https://jackedupstudios.com/vr-input-component
 
 using ItsVR.Scriptables;
 using UnityEngine;
@@ -9,6 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace ItsVR.Input {
     [DisallowMultipleComponent]
+    [HelpURL("https://jackedupstudios.com/vr-input-component")]
     [AddComponentMenu("It's VR/Input/VR Input Component (Incomplete)")]
     public class VRInputComponent : MonoBehaviour {
         #region Variables
@@ -39,15 +39,14 @@ namespace ItsVR.Input {
             if (_alreadySubscribedToInputEvents) return;
             _alreadySubscribedToInputEvents = true;
             
-            inputReference.triggerPressed.performed += TriggerPressed;
-            inputReference.gripPressed.performed += GripPressed;
-            inputReference.joystickPressed.performed += JoystickPressed;
-            inputReference.joystickTouched.performed += JoystickTouched;
-            inputReference.primaryButtonPressed.performed += PrimaryButtonPressed;
-            inputReference.primaryButtonTouched.performed += PrimaryButtonTouched;
-            inputReference.secondaryButtonPressed.performed += SecondaryButtonPressed;
-            inputReference.secondaryButtonPressed.performed += SecondaryButtonTouched;
-            inputReference.thumbrestTouched.performed += ThumbrestTouched;
+            inputReference.universalInputs.triggerPressed.performed += TriggerPressed;
+            inputReference.universalInputs.gripPressed.performed += GripPressed;
+            inputReference.universalInputs.joystickPressed.performed += JoystickPressed;
+            inputReference.universalInputs.joystickTouched.performed += JoystickTouched;
+            inputReference.universalInputs.primaryButtonPressed.performed += PrimaryButtonPressed;
+            inputReference.universalInputs.primaryButtonTouched.performed += PrimaryButtonTouched;
+            inputReference.universalInputs.secondaryButtonPressed.performed += SecondaryButtonPressed;
+            inputReference.universalInputs.secondaryButtonPressed.performed += SecondaryButtonTouched;
         }
 
         private void OnDisable() {
@@ -60,25 +59,25 @@ namespace ItsVR.Input {
 
             // Joystick input events logic.
             if (_joystickEventAlreadyFired) {
-                if (inputReference.JoystickPosition.y < 0.75f && inputReference.JoystickPosition.y > -0.75f && inputReference.JoystickPosition.x < 0.75f && inputReference.JoystickPosition.x > -0.75f) 
+                if (inputReference.universalInputs.JoystickPosition.y < 0.75f && inputReference.universalInputs.JoystickPosition.y > -0.75f && inputReference.universalInputs.JoystickPosition.x < 0.75f && inputReference.universalInputs.JoystickPosition.x > -0.75f) 
                     _joystickEventAlreadyFired = false;
                 
                 return;
             }
             
-            if (inputReference.JoystickPosition.y > 0.75f) {
+            if (inputReference.universalInputs.JoystickPosition.y > 0.75f) {
                 inputEvents.joystick.joystickUp?.Invoke();
                 _joystickEventAlreadyFired = true;
             }
-            else if (inputReference.JoystickPosition.y < -0.75f) {
+            else if (inputReference.universalInputs.JoystickPosition.y < -0.75f) {
                 inputEvents.joystick.joystickDown?.Invoke();
                 _joystickEventAlreadyFired = true;
             }
-            else if (inputReference.JoystickPosition.x > 0.75f) {
+            else if (inputReference.universalInputs.JoystickPosition.x > 0.75f) {
                 inputEvents.joystick.joystickRight?.Invoke();
                 _joystickEventAlreadyFired = true;
             }
-            else if (inputReference.JoystickPosition.x < -0.75f) {
+            else if (inputReference.universalInputs.JoystickPosition.x < -0.75f) {
                 inputEvents.joystick.joystickLeft?.Invoke();
                 _joystickEventAlreadyFired = true;
             }
@@ -89,7 +88,7 @@ namespace ItsVR.Input {
         /// </summary>
         public void DisableInputs() {
             if (inputReference != null) 
-                inputReference.DisableInputs();
+                inputReference.DisableAllInputs();
             else 
                 Debug.LogError("[VR Input Component] Cannot disable inputs as no input reference was referenced.", this);
         }
@@ -127,11 +126,7 @@ namespace ItsVR.Input {
         private void SecondaryButtonTouched(InputAction.CallbackContext callbackContext) {
             inputEvents.secondaryButton.secondaryButtonTouched.Invoke();
         }
-        
-        private void ThumbrestTouched(InputAction.CallbackContext callbackContext) {
-            inputEvents.thumbrest.thumbrestTouched.Invoke();
-        }
-        
+
         #endregion
     }
 
@@ -168,12 +163,6 @@ namespace ItsVR.Input {
         /// </summary>
         [Tooltip("All the secondary button events.")]
         public SecondaryButtonInputEvents secondaryButton;
-
-        /// <summary>
-        /// All thumbrest events.
-        /// </summary>
-        [Tooltip("All thumbrest events.")]
-        public ThumbrestInputEvents thumbrest;
     }
 
     [System.Serializable]
@@ -263,14 +252,5 @@ namespace ItsVR.Input {
         public UnityEvent secondaryButtonTouched;
     }
 
-    [System.Serializable]
-    public class ThumbrestInputEvents {
-        /// <summary>
-        /// Invoked when the thumbrest is touched.
-        /// </summary>
-        [Tooltip("Invoked when the thumbrest is touched.")]
-        public UnityEvent thumbrestTouched;
-    }
-    
     #endregion
 }

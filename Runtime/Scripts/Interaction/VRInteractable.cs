@@ -1,11 +1,11 @@
 // This script was updated on 10/26/2021 by Jack Randolph.
-// Documentation: https://jackedupstudios.com/vr-interactable
 
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace ItsVR.Interaction {
+    [HelpURL("https://jackedupstudios.com/vr-interactable")]
     public class VRInteractable : MonoBehaviour {
         #region Variables
 
