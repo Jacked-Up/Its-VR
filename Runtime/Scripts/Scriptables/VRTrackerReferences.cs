@@ -1,4 +1,4 @@
-// This script was updated on 10/26/2021 by Jack Randolph.
+// This script was updated on 10/30/2021 by Jack Randolph.
 
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,7 +35,7 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public Vector3 TrackerPosition {
             get {
-                if (!trackerPosition.enabled) trackerPosition.Enable();
+                if (!trackerPosition.enabled) trackerPosition?.Enable();
                 return (Vector3)trackerPosition?.ReadValue<Vector3>();
             }
         }
@@ -46,7 +46,7 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public Quaternion TrackerRotation {
             get {
-                if (!trackerRotation.enabled) trackerRotation.Enable();
+                if (!trackerRotation.enabled) trackerRotation?.Enable();
                 return (Quaternion)trackerRotation?.ReadValue<Quaternion>();
             }
         }
@@ -56,7 +56,7 @@ namespace ItsVR.Scriptables {
         /// </summary>
         public bool IsTracking {
             get {
-                if (!trackingStatus.enabled) trackingStatus.Enable();
+                if (!trackingStatus.enabled) trackingStatus?.Enable();
                 return (int)trackingStatus?.ReadValue<float>() == 1;
             }
         }
@@ -65,9 +65,9 @@ namespace ItsVR.Scriptables {
         /// Disables all inputs referenced on this script.
         /// </summary>
         public void DisableInputs() {
-            trackerPosition.Disable();
-            trackerRotation.Disable();
-            trackingStatus.Disable();
+            trackerPosition?.Disable();
+            trackerRotation?.Disable();
+            trackingStatus?.Disable();
         }
     }
 }

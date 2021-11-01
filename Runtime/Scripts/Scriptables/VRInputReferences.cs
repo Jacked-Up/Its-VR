@@ -1,7 +1,8 @@
-// This script was updated on 10/28/2021 by Jack Randolph.
+// This script was updated on 10/31/2021 by Jack Randolph.
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 namespace ItsVR.Scriptables {
     [HelpURL("https://jackedupstudios.com/its-vr-documentation-1#b47abff1-8a0b-4eb6-b03c-3617ba2beb61")]
@@ -15,6 +16,12 @@ namespace ItsVR.Scriptables {
         [Tooltip("All of the universal input bindings.")]
         public UniversalInputs universalInputs;
 
+        /// <summary>
+        /// All of the system input bindings.
+        /// </summary>
+        [Tooltip("All of the system input bindings.")]
+        public SystemInputs systemInputs;
+        
         /// <summary>
         /// All of the Oculus specific input bindings.
         /// </summary>
@@ -118,12 +125,18 @@ namespace ItsVR.Scriptables {
         public InputAction secondaryButtonTouched;
         
         /// <summary>
+        /// Input reference for the controllers haptics.
+        /// </summary>
+        [Tooltip("Input reference for the controllers haptics.")]
+        public InputAction haptics;
+        
+        /// <summary>
         /// How far the trigger is depressed.
         /// </summary>
         /// <returns></returns>
         public float TriggerDepress {
             get {
-                if (!triggerDepress.enabled) triggerDepress.Enable();
+                if (!triggerDepress.enabled) triggerDepress?.Enable();
                 return (float)triggerDepress?.ReadValue<float>();
             }
         }
@@ -134,8 +147,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool TriggerPressed {
             get {
-                if (!triggerPressed.enabled) triggerPressed.Enable();
-                return (int)triggerPressed.ReadValue<float>() == 1;
+                if (!triggerPressed.enabled) triggerPressed?.Enable();
+                return (int)triggerPressed?.ReadValue<float>() == 1;
             }
         }
         
@@ -145,7 +158,7 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public float GripDepress {
             get {
-                if (!gripDepress.enabled) gripDepress.Enable();
+                if (!gripDepress.enabled) gripDepress?.Enable();
                 return (float)gripDepress?.ReadValue<float>();  
             }
         }
@@ -156,8 +169,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool GripPressed {
             get {
-                if (!gripPressed.enabled) gripPressed.Enable();
-                return (int)gripPressed.ReadValue<float>() == 1;
+                if (!gripPressed.enabled) gripPressed?.Enable();
+                return (int)gripPressed?.ReadValue<float>() == 1;
             }
         }
         
@@ -167,7 +180,7 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public Vector2 JoystickPosition {
             get {
-                if (!joystickPosition.enabled) joystickPosition.Enable();
+                if (!joystickPosition.enabled) joystickPosition?.Enable();
                 return (Vector2)joystickPosition?.ReadValue<Vector2>(); 
             }
         }
@@ -178,8 +191,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool JoystickPressed {
             get {
-                if (!joystickPressed.enabled) joystickPressed.Enable();
-                return (int)joystickPressed.ReadValue<float>() == 1; 
+                if (!joystickPressed.enabled) joystickPressed?.Enable();
+                return (int)joystickPressed?.ReadValue<float>() == 1; 
             }
         }
         
@@ -189,8 +202,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool JoystickTouched {
             get {
-                if (!joystickTouched.enabled) joystickTouched.Enable();
-                return (int)joystickTouched.ReadValue<float>() == 1; 
+                if (!joystickTouched.enabled) joystickTouched?.Enable();
+                return (int)joystickTouched?.ReadValue<float>() == 1; 
             }
         }
         
@@ -200,8 +213,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool PrimaryButtonPressed {
             get {
-                if (!primaryButtonPressed.enabled) primaryButtonPressed.Enable();
-                return (int)primaryButtonPressed.ReadValue<float>() == 1; 
+                if (!primaryButtonPressed.enabled) primaryButtonPressed?.Enable();
+                return (int)primaryButtonPressed?.ReadValue<float>() == 1; 
             }
         }
         
@@ -211,8 +224,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool PrimaryButtonTouched {
             get {
-                if (!primaryButtonTouched.enabled) primaryButtonTouched.Enable();
-                return (int)primaryButtonTouched.ReadValue<float>() == 1;
+                if (!primaryButtonTouched.enabled) primaryButtonTouched?.Enable();
+                return (int)primaryButtonTouched?.ReadValue<float>() == 1;
             }
         }
         
@@ -222,8 +235,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool SecondaryButtonPressed {
             get {
-                if (!secondaryButtonPressed.enabled) secondaryButtonPressed.Enable();
-                return (int)secondaryButtonPressed.ReadValue<float>() == 1;  
+                if (!secondaryButtonPressed.enabled) secondaryButtonPressed?.Enable();
+                return (int)secondaryButtonPressed?.ReadValue<float>() == 1;  
             }
         }
         
@@ -233,30 +246,73 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool SecondaryButtonTouched {
             get {
-                if (!secondaryButtonTouched.enabled) secondaryButtonTouched.Enable();
-                return (int)secondaryButtonTouched.ReadValue<float>() == 1; 
+                if (!secondaryButtonTouched.enabled) secondaryButtonTouched?.Enable();
+                return (int)secondaryButtonTouched?.ReadValue<float>() == 1; 
             }
+        }
+
+        /// <summary>
+        /// Vibrates the controller at amplitude for duration.
+        /// </summary>
+        /// <param name="amplitude"></param>
+        /// <param name="duration"></param>
+        public void SendImpulse(float amplitude, float duration) {
+            if (!haptics.enabled) haptics?.Enable();
+            if (haptics?.activeControl?.device is XRControllerWithRumble rumbleController) 
+                rumbleController.SendImpulse(amplitude, duration);
         }
         
         /// <summary>
         /// Disables all universal inputs.
         /// </summary>
         public void DisableInputs() {
-            triggerDepress.Disable();
-            triggerPressed.Disable();
+            triggerDepress?.Disable();
+            triggerPressed?.Disable();
             
-            gripDepress.Disable();
-            gripPressed.Disable();
+            gripDepress?.Disable();
+            gripPressed?.Disable();
             
-            joystickPosition.Disable();
-            joystickPressed.Disable();
-            joystickTouched.Disable();
+            joystickPosition?.Disable();
+            joystickPressed?.Disable();
+            joystickTouched?.Disable();
             
-            primaryButtonPressed.Disable();
-            primaryButtonTouched.Disable();
+            primaryButtonPressed?.Disable();
+            primaryButtonTouched?.Disable();
             
-            secondaryButtonPressed.Disable();
-            secondaryButtonTouched.Disable();
+            secondaryButtonPressed?.Disable();
+            secondaryButtonTouched?.Disable();
+            
+            haptics?.Disable();
+        }
+    }
+
+    /// <summary>
+    /// Class containing all system specific inputs.
+    /// </summary>
+    [System.Serializable]
+    public class SystemInputs {
+        /// <summary>
+        /// Input reference for when the system button is touched.
+        /// </summary>
+        [Tooltip("Input reference for when the system button is touched.")]
+        public InputAction systemPressed;
+
+        /// <summary>
+        /// If the system button is pressed or not.
+        /// </summary>
+        /// <returns></returns>
+        public bool SystemPressed {
+            get {
+                if (!systemPressed.enabled) systemPressed?.Enable();
+                return (int)systemPressed?.ReadValue<float>() == 1;  
+            }
+        }
+        
+        /// <summary>
+        /// Disables all system specific inputs.
+        /// </summary>
+        public void DisableInputs() {
+            systemPressed?.Disable();
         }
     }
 
@@ -277,8 +333,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool TriggerTouched {
             get {
-                if (!triggerTouched.enabled) triggerTouched.Enable();
-                return (int)triggerTouched.ReadValue<float>() == 1;  
+                if (!triggerTouched.enabled) triggerTouched?.Enable();
+                return (int)triggerTouched?.ReadValue<float>() == 1;  
             }
         }
         
@@ -286,7 +342,7 @@ namespace ItsVR.Scriptables {
         /// Disables all Oculus specific inputs.
         /// </summary>
         public void DisableInputs() {
-            triggerTouched.Disable();
+            triggerTouched?.Disable();
         }
     }
     
@@ -319,8 +375,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public Vector2 TrackpadPosition {
             get {
-                if (!trackpadPosition.enabled) trackpadPosition.Enable();
-                return trackpadPosition.ReadValue<Vector2>();  
+                if (!trackpadPosition.enabled) trackpadPosition?.Enable();
+                return (Vector2)trackpadPosition?.ReadValue<Vector2>();  
             }
         }
         
@@ -330,8 +386,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool TrackpadClicked {
             get {
-                if (!trackpadClicked.enabled) trackpadClicked.Enable();
-                return (int)trackpadClicked.ReadValue<float>() == 1;  
+                if (!trackpadClicked.enabled) trackpadClicked?.Enable();
+                return (int)trackpadClicked?.ReadValue<float>() == 1;  
             }
         }
         
@@ -341,8 +397,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool TrackpadTouched {
             get {
-                if (!trackpadTouched.enabled) trackpadTouched.Enable();
-                return (int)trackpadTouched.ReadValue<float>() == 1;  
+                if (!trackpadTouched.enabled) trackpadTouched?.Enable();
+                return (int)trackpadTouched?.ReadValue<float>() == 1;  
             }
         }
         
@@ -350,9 +406,9 @@ namespace ItsVR.Scriptables {
         /// Disables all Vive specific inputs.
         /// </summary>
         public void DisableInputs() {
-            trackpadPosition.Disable();
-            trackpadClicked.Disable();
-            trackpadTouched.Disable();
+            trackpadPosition?.Disable();
+            trackpadClicked?.Disable();
+            trackpadTouched?.Disable();
         }
     }
     
@@ -397,8 +453,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public float GripForce {
             get {
-                if (!gripForce.enabled) gripForce.Enable();
-                return gripForce.ReadValue<float>();  
+                if (!gripForce.enabled) gripForce?.Enable();
+                return (float)gripForce?.ReadValue<float>();  
             }
         }
         
@@ -408,8 +464,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public Vector2 TrackpadPosition {
             get {
-                if (!trackpadPosition.enabled) trackpadPosition.Enable();
-                return trackpadPosition.ReadValue<Vector2>();  
+                if (!trackpadPosition.enabled) trackpadPosition?.Enable();
+                return (Vector2)trackpadPosition?.ReadValue<Vector2>();  
             }
         }
         
@@ -419,8 +475,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool TrackpadTouched {
             get {
-                if (!trackpadTouched.enabled) trackpadTouched.Enable();
-                return (int)trackpadTouched.ReadValue<float>() == 1;  
+                if (!trackpadTouched.enabled) trackpadTouched?.Enable();
+                return (int)trackpadTouched?.ReadValue<float>() == 1;  
             }
         }
 
@@ -430,8 +486,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public float TrackpadForce {
             get {
-                if (!trackpadForce.enabled) trackpadForce.Enable();
-                return trackpadForce.ReadValue<float>();  
+                if (!trackpadForce.enabled) trackpadForce?.Enable();
+                return (float)trackpadForce?.ReadValue<float>();  
             }
         }
         
@@ -441,8 +497,8 @@ namespace ItsVR.Scriptables {
         /// <returns></returns>
         public bool TriggerTouched {
             get {
-                if (!triggerTouched.enabled) triggerTouched.Enable();
-                return (int)triggerTouched.ReadValue<float>() == 1;  
+                if (!triggerTouched.enabled) triggerTouched?.Enable();
+                return (int)triggerTouched?.ReadValue<float>() == 1;  
             }
         }
         
@@ -450,11 +506,11 @@ namespace ItsVR.Scriptables {
         /// Disables all Index specific inputs.
         /// </summary>
         public void DisableInputs() {
-            gripForce.Disable();
-            trackpadPosition.Disable();
-            trackpadTouched.Disable();
-            trackpadForce.Disable();
-            triggerTouched.Disable();
+            gripForce?.Disable();
+            trackpadPosition?.Disable();
+            trackpadTouched?.Disable();
+            trackpadForce?.Disable();
+            triggerTouched?.Disable();
         }
     }
 }

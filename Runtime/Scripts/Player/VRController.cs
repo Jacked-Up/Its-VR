@@ -1,5 +1,6 @@
-// This script was updated on 10/26/2021 by Jack Randolph.
+// This script was updated on 10/30/2021 by Jack Randolph.
 
+using System;
 using ItsVR.Scriptables;
 using UnityEngine;
 
@@ -34,6 +35,39 @@ namespace ItsVR.Player {
             
             if (_tracker == null)
                 _tracker = GetComponent<VRTracker>();
+        }
+
+        /// <summary>
+        /// Vibrates this controller at the amplitude for the duration.
+        /// </summary>
+        /// <param name="amplitude"></param>
+        /// <param name="duration"></param>
+        public void Vibrate(float amplitude, float duration) {
+            inputReference.universalInputs?.SendImpulse(amplitude, duration);
+        }
+
+        /// <summary>
+        /// The speed of the controller in local space.
+        /// </summary>
+        public float Speed => _tracker.LocalSpeed;
+
+        /// <summary>
+        /// The velocity of the controller in local space.
+        /// </summary>
+        public Vector3 Velocity => _tracker.LocalVelocity;
+
+        /// <summary>
+        /// The angular velocity of the controller in local space.
+        /// </summary>
+        public Vector3 AngularVelocity => _tracker.LocalAngularVelocity;
+        
+        /// <summary>
+        /// (Incomplete) Returns the pointer direction of the controller.
+        /// </summary>
+        public Vector3 PointerDirection {
+            get {
+                return -transform.up;
+            }
         }
 
         #region Editor

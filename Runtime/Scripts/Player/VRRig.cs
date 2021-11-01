@@ -94,6 +94,11 @@ namespace ItsVR.Player {
         /// <summary>
         /// Invoked when the rig is rotated.
         /// </summary>
+        public event VRRigEvent RigTransformed;
+        
+        /// <summary>
+        /// Invoked when the rig is rotated.
+        /// </summary>
         public event VRRigEvent RigRotated;
         
         public enum HeightModes { Device, Float }
@@ -127,6 +132,19 @@ namespace ItsVR.Player {
         }
 
         /// <summary>
+        /// Moves the rig to the position.
+        /// </summary>
+        public void TransformRig(Vector3 position) {
+            if (head == null) {
+                Debug.LogError("[VR Rig] Cannot transform rig because no head object was referenced.", this);
+                return;
+            }
+            
+            RigTransformed?.Invoke();
+            transform.position = position - FeetLocalPosition;
+        }
+        
+        /// <summary>
         /// Rotates the rig by using the head as a pivot.
         /// </summary>
         /// <param name="angle"></param>
@@ -135,6 +153,7 @@ namespace ItsVR.Player {
                 Debug.LogError("[VR Rig] Cannot rotate rig because no head object was referenced.", this);
                 return;
             }
+            
             if (angle == 0) 
                 Debug.LogWarning("[VR Rig] You tried to rotate the rig by zero degrees.", this);
 
@@ -147,10 +166,14 @@ namespace ItsVR.Player {
         private void OnDrawGizmos() {
             var heightYOffset = heightMode == HeightModes.Float ? heightOffset : 1.75f;
             
+            var self = transform;
+            var selfPosition = self.position;
+            var selfScale = self.lossyScale;
+
             // Head setup.
             if (head != null) {
                 if (!Application.isPlaying)
-                    head.transform.position = Vector3.Scale(new Vector3(transform.position.x, transform.position.y + heightYOffset, transform.position.z), transform.lossyScale);
+                    head.transform.position = Vector3.Scale(new Vector3(transform.position.x, selfPosition.y + heightYOffset, selfPosition.z), selfScale);
 
                 var headCol = head.GetComponent<SphereCollider>();
                 if (headCol != null) 
@@ -168,7 +191,7 @@ namespace ItsVR.Player {
 
             // Draw boundary box.
             Gizmos.color = Color.green;
-            Gizmos.DrawWireCube(Vector3.Scale(new Vector3(transform.position.x, transform.position.y + (heightYOffset + 1.2f) / 2, transform.position.z), transform.lossyScale), Vector3.Scale(new Vector3(3f, (heightYOffset + 1.2f), 3f), transform.lossyScale));
+            Gizmos.DrawWireCube(Vector3.Scale(new Vector3(selfPosition.x, selfPosition.y + (heightYOffset + 1.2f) / 2, selfPosition.z), selfScale), Vector3.Scale(new Vector3(3f, (heightYOffset + 1.2f), 3f), selfScale));
 
             // Draw vectors.
             if (!Application.isPlaying) {
@@ -183,20 +206,24 @@ namespace ItsVR.Player {
 
         private void OnDrawGizmosSelected() {
             var heightYOffset = heightMode == HeightModes.Float ? heightOffset : 1.75f;
-
+           
+            var self = transform;
+            var selfPosition = self.position;
+            var selfScale = self.lossyScale;
+            
             // Draw boundary box.
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(Vector3.Scale(new Vector3(transform.position.x, transform.position.y + (heightYOffset + 1.2f) / 2, transform.position.z), transform.lossyScale), Vector3.Scale(new Vector3(3f, (heightYOffset + 1.2f), 3f), transform.lossyScale));
+            Gizmos.DrawWireCube(Vector3.Scale(new Vector3(selfPosition.x, selfPosition.y + (heightYOffset + 1.2f) / 2, selfPosition.z), selfScale), Vector3.Scale(new Vector3(3f, (heightYOffset + 1.2f), 3f), selfScale));
            
             // Draw grid.
             Gizmos.color = Color.green;
             for (var i = 0; i < 4; i++) {
-                Gizmos.DrawLine(Vector3.Scale(new Vector3(transform.position.x + 3, transform.position.y, transform.position.z + i), transform.lossyScale), Vector3.Scale(new Vector3(transform.position.x + -3, transform.position.y, transform.position.z + i), transform.lossyScale));
-                Gizmos.DrawLine(Vector3.Scale(new Vector3(transform.position.x + 3, transform.position.y, transform.position.z + -i), transform.lossyScale),  Vector3.Scale(new Vector3(transform.position.x + -3, transform.position.y, transform.position.z + -i), transform.lossyScale));
+                Gizmos.DrawLine(Vector3.Scale(new Vector3(selfPosition.x + 3, selfPosition.y, selfPosition.z + i), selfScale), Vector3.Scale(new Vector3(selfPosition.x + -3, selfPosition.y, selfPosition.z + i), selfScale));
+                Gizmos.DrawLine(Vector3.Scale(new Vector3(selfPosition.x + 3, selfPosition.y, selfPosition.z + -i), selfScale),  Vector3.Scale(new Vector3(selfPosition.x + -3, selfPosition.y, selfPosition.z + -i), selfScale));
             }
             for (var i = 0; i < 4; i++) {
-                Gizmos.DrawLine(Vector3.Scale(new Vector3(transform.position.x + i, transform.position.y, transform.position.z + 3), transform.lossyScale), Vector3.Scale(new Vector3(transform.position.x + i, transform.position.y, transform.position.z + -3), transform.lossyScale));
-                Gizmos.DrawLine(Vector3.Scale(new Vector3(transform.position.x + -i, transform.position.y, transform.position.z + 3), transform.lossyScale),  Vector3.Scale(new Vector3(transform.position.x + -i, transform.position.y, transform.position.z + -3), transform.lossyScale));
+                Gizmos.DrawLine(Vector3.Scale(new Vector3(selfPosition.x + i, selfPosition.y, selfPosition.z + 3), selfScale), Vector3.Scale(new Vector3(selfPosition.x + i, selfPosition.y, selfPosition.z + -3), selfScale));
+                Gizmos.DrawLine(Vector3.Scale(new Vector3(selfPosition.x + -i, selfPosition.y, selfPosition.z + 3), selfScale),  Vector3.Scale(new Vector3(selfPosition.x + -i, selfPosition.y, selfPosition.z + -3), selfScale));
             }
         }
 
