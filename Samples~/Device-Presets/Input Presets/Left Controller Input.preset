@@ -1,0 +1,779 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Left Controller Input
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 38e97e8f4388a664ab6403400fce5b0d, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_Name
+    value: Trigger Depress
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_ExpectedControlType
+    value: Axis
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_Id
+    value: 2b9dfd38-85cc-4e0c-9571-10e7eb3e9440
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_SingletonActionBindings.Array.data[0].m_Id
+    value: 3bed7bb4-0346-4588-b4dc-b6169b726fc9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/trigger
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Trigger Depress
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerDepress.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_Name
+    value: Trigger Pressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_ExpectedControlType
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_Id
+    value: a15e5419-451a-4182-b989-fa326b0960f9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_SingletonActionBindings.Array.data[0].m_Id
+    value: 81e2a4f4-d55f-4ec8-a243-b31717c22926
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/triggerPressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Trigger Pressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: triggerPressed.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_Name
+    value: Grip Depress
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_ExpectedControlType
+    value: Axis
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_Id
+    value: 86be34f3-8a04-4c53-94bc-913a7b692d91
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_SingletonActionBindings.Array.data[0].m_Id
+    value: 9d3c0e5b-0e66-43db-b289-90c9b1a1b63d
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/grip
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Grip Depress
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripDepress.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_Name
+    value: Grip Pressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_ExpectedControlType
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_Id
+    value: 4dca77a6-dac3-4c27-ad2e-dc09af5b98d8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_SingletonActionBindings.Array.data[0].m_Id
+    value: f6dccd36-c129-409d-a4a6-007c47f947ac
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/gripPressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Grip Pressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gripPressed.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_Name
+    value: Joystick Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_ExpectedControlType
+    value: Vector2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_Id
+    value: e2d15022-e22f-4628-a5b5-ba5f00c4e2ad
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_SingletonActionBindings.Array.data[0].m_Id
+    value: 8dbb8ebc-2d71-4ece-ac2d-04c14f2018e5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/joystick
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Joystick Position
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPosition.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_Name
+    value: Joystick Pressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_ExpectedControlType
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_Id
+    value: 2e1bee24-41e7-4052-90ef-8ee0b4e284b0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_SingletonActionBindings.Array.data[0].m_Id
+    value: fb9bfedd-0fd5-4a46-b3bb-dfb671ba69d7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/joystickClicked
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Joystick Pressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickPressed.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_Name
+    value: Joystick Touched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_Type
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_ExpectedControlType
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_Id
+    value: 14c06505-1b09-4fca-bf0c-b7ec892be31c
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[0].m_Id
+    value: d1c098c1-6cf5-4166-b3ef-86382ce4135e
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <OculusTouchController>{LeftHand}/thumbstickTouched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Joystick Touched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[1].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[1].m_Id
+    value: 124d5932-b22b-446e-ab83-ab8a6b819003
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[1].m_Path
+    value: <ValveIndexController>{LeftHand}/thumbstickTouched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[1].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[1].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[1].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[1].m_Action
+    value: Joystick Touched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: joystickTouched.m_SingletonActionBindings.Array.data[1].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_Name
+    value: Primary Button Pressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_ExpectedControlType
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_Id
+    value: c4145c08-163d-4cf8-a28f-edf1371e196c
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Id
+    value: ae75e0ff-6ca2-45d3-9ccc-993a03d992c7
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/primaryButton
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Primary Button Pressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_Name
+    value: Primary Button Touched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_ExpectedControlType
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_Id
+    value: 3bc9c934-e8ba-4dc7-be6f-c46903cb8fc1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Id
+    value: 29c6e532-c7af-4d6c-a378-4c6a738eee9c
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/primaryTouched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Primary Button Touched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: primaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_Name
+    value: Secondary Button Pressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_ExpectedControlType
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_Id
+    value: 33d4deea-02b1-4a97-9bef-76803d09d6cb
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Id
+    value: 19e2f013-b715-4aa3-b9f7-a86faa61c1ee
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/secondaryButton
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Secondary Button Pressed
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonPressed.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_Name
+    value: Secondary Button Touched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_ExpectedControlType
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_Id
+    value: 015e7559-602c-4eae-a6a8-8c98088500a3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Id
+    value: ebeb8237-64f5-4a00-9e93-0efb3ba1f723
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/secondaryTouched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Secondary Button Touched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: secondaryButtonTouched.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_Name
+    value: Thumbrest Touched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_Type
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_ExpectedControlType
+    value: Button
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_Id
+    value: e457def1-3845-477b-89e9-9710de6730db
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_SingletonActionBindings.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_SingletonActionBindings.Array.data[0].m_Name
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_SingletonActionBindings.Array.data[0].m_Id
+    value: dbeaf684-6db9-4475-b6a2-4b8e57161097
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_SingletonActionBindings.Array.data[0].m_Path
+    value: <XRController>{LeftHand}/touchpadTouch
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_SingletonActionBindings.Array.data[0].m_Interactions
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_SingletonActionBindings.Array.data[0].m_Processors
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_SingletonActionBindings.Array.data[0].m_Groups
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_SingletonActionBindings.Array.data[0].m_Action
+    value: Thumbrest Touched
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: thumbrestTouched.m_SingletonActionBindings.Array.data[0].m_Flags
+    value: 0
+    objectReference: {fileID: 0}
+  m_ExcludedProperties: []

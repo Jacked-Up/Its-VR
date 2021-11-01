@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e97e8f4388a664ab6403400fce5b0d, type: 3}
+  m_Name: Left Controller Inputs
+  m_EditorClassIdentifier: 
+  triggerDepress:
+    m_Name: Trigger Depress
+    m_Type: 0
+    m_ExpectedControlType: Axis
+    m_Id: 2b9dfd38-85cc-4e0c-9571-10e7eb3e9440
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 3bed7bb4-0346-4588-b4dc-b6169b726fc9
+      m_Path: <XRController>{LeftHand}/trigger
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Trigger Depress
+      m_Flags: 0
+  triggerPressed:
+    m_Name: Trigger Pressed
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: a15e5419-451a-4182-b989-fa326b0960f9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 81e2a4f4-d55f-4ec8-a243-b31717c22926
+      m_Path: <XRController>{LeftHand}/triggerPressed
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Trigger Pressed
+      m_Flags: 0
+  gripDepress:
+    m_Name: Grip Depress
+    m_Type: 0
+    m_ExpectedControlType: Axis
+    m_Id: 86be34f3-8a04-4c53-94bc-913a7b692d91
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 9d3c0e5b-0e66-43db-b289-90c9b1a1b63d
+      m_Path: <XRController>{LeftHand}/grip
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Grip Depress
+      m_Flags: 0
+  gripPressed:
+    m_Name: Grip Pressed
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 4dca77a6-dac3-4c27-ad2e-dc09af5b98d8
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f6dccd36-c129-409d-a4a6-007c47f947ac
+      m_Path: <XRController>{LeftHand}/gripPressed
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Grip Pressed
+      m_Flags: 0
+  joystickPosition:
+    m_Name: Joystick Position
+    m_Type: 0
+    m_ExpectedControlType: Vector2
+    m_Id: e2d15022-e22f-4628-a5b5-ba5f00c4e2ad
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8dbb8ebc-2d71-4ece-ac2d-04c14f2018e5
+      m_Path: <XRController>{LeftHand}/joystick
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joystick Position
+      m_Flags: 0
+  joystickPressed:
+    m_Name: Joystick Pressed
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 2e1bee24-41e7-4052-90ef-8ee0b4e284b0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: fb9bfedd-0fd5-4a46-b3bb-dfb671ba69d7
+      m_Path: <XRController>{LeftHand}/joystickClicked
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joystick Pressed
+      m_Flags: 0
+  joystickTouched:
+    m_Name: Joystick Touched
+    m_Type: 0
+    m_ExpectedControlType: Button
+    m_Id: 14c06505-1b09-4fca-bf0c-b7ec892be31c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d1c098c1-6cf5-4166-b3ef-86382ce4135e
+      m_Path: <OculusTouchController>{LeftHand}/thumbstickTouched
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joystick Touched
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 124d5932-b22b-446e-ab83-ab8a6b819003
+      m_Path: <ValveIndexController>{LeftHand}/thumbstickTouched
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Joystick Touched
+      m_Flags: 0
+  primaryButtonPressed:
+    m_Name: Primary Button Pressed
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: c4145c08-163d-4cf8-a28f-edf1371e196c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ae75e0ff-6ca2-45d3-9ccc-993a03d992c7
+      m_Path: <XRController>{LeftHand}/primaryButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Primary Button Pressed
+      m_Flags: 0
+  primaryButtonTouched:
+    m_Name: Primary Button Touched
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 3bc9c934-e8ba-4dc7-be6f-c46903cb8fc1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 29c6e532-c7af-4d6c-a378-4c6a738eee9c
+      m_Path: <XRController>{LeftHand}/primaryTouched
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Primary Button Touched
+      m_Flags: 0
+  secondaryButtonPressed:
+    m_Name: Secondary Button Pressed
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 33d4deea-02b1-4a97-9bef-76803d09d6cb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 19e2f013-b715-4aa3-b9f7-a86faa61c1ee
+      m_Path: <XRController>{LeftHand}/secondaryButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Secondary Button Pressed
+      m_Flags: 0
+  secondaryButtonTouched:
+    m_Name: Secondary Button Touched
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 015e7559-602c-4eae-a6a8-8c98088500a3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ebeb8237-64f5-4a00-9e93-0efb3ba1f723
+      m_Path: <XRController>{LeftHand}/secondaryTouched
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Secondary Button Touched
+      m_Flags: 0
+  thumbrestTouched:
+    m_Name: Thumbrest Touched
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: e457def1-3845-477b-89e9-9710de6730db
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: dbeaf684-6db9-4475-b6a2-4b8e57161097
+      m_Path: <XRController>{LeftHand}/touchpadTouch
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Thumbrest Touched
+      m_Flags: 0
