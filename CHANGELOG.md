@@ -7,6 +7,13 @@
 
 ## Releases
 
+## 0.0.3
+
+- Added teleport height check at teleport target
+- Added local space and world space velocity variable (Vector3) to VRTracker.cs
+- Added local space and world space speed variable (Float) to VRTracker.cs
+- HMD specific inputs seperated by classes on VRInputReferences.cs (Universal, System, Oculus, Valve, Vive)
+ 
 ## 0.0.2
 
 - Added snap turn locomotion sample
