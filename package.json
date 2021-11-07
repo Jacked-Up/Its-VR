@@ -28,12 +28,12 @@
     {
       "displayName": "Device Presets",
       "description": "Contains tracker references and input references presets.",
-      "path": "Samples~/Device-Presets"
+      "path": "Samples~/Device Presets"
     },
     {
       "displayName": "Sample Implementations",
       "description": "A bunch of It's VR sample implementations for creating a VR game.",
-      "path": "Samples~/Sample-Implementations"
+      "path": "Samples~/Sample Implementations"
     }
   ]
 }
