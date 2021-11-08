@@ -1,4 +1,4 @@
-// This script was updated on 10/26/2021 by Jack Randolph.
+// This script was updated on 11/8/2021 by Jack Randolph.
 
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -63,8 +63,11 @@ namespace ItsVR_Samples.Locomotion {
             if (inputController == null)
                 Debug.LogError("[VR Continuous Move] No input controller was referenced. (I have no way to receive input)", this);
             
-            _characterController = GetComponent<CharacterController>();
-            _vrRig = GetComponent<VRRig>();
+            if (_characterController == null)
+                _characterController = GetComponent<CharacterController>();
+            
+            if (_vrRig == null) 
+                _vrRig = GetComponent<VRRig>();
             
             // This class contains an event which fires right after the Update()
             // method is invoked. Subscribing to the event will ensure that the
@@ -73,9 +76,8 @@ namespace ItsVR_Samples.Locomotion {
         }
 
         private void OnDisable() {
-            _characterController = null;
-            _vrRig = null;
-            
+            _characterController.enabled = false;
+
             InputSystem.onAfterUpdate -= MoveUpdate;
         }
 
@@ -87,11 +89,12 @@ namespace ItsVR_Samples.Locomotion {
         /// Runs the movement behavior.
         /// </summary>
         private void MoveUpdate() {
-            // We must have an input controller for input.
-            // The script bails if an input controller was not referenced that frame.
+            // Bail if the input controller is null.
             if (inputController == null) return;
 
-            // Scaling behavior.
+            // Enable the character controller is it is disabled.
+            if (!_characterController.enabled)
+                _characterController.enabled = true;
             
             // Here, we are sizing and centering the character controller with the
             // players height and position.
@@ -101,9 +104,7 @@ namespace ItsVR_Samples.Locomotion {
             // The hip position is not exactly where the players actual hips are. The hip position
             // is the position between the head and the feet.
             _characterController.center = _vrRig.HipLocalPosition;
-            
-            // Movement behavior. 
-            
+
             // First, we fetch the position of the joystick.
             var joystickInputPosition = inputController.inputReference.universalInputs.JoystickPosition;
             
@@ -121,18 +122,18 @@ namespace ItsVR_Samples.Locomotion {
             
             // Lastly, lets apply all of the movement calculations to the player.
             _characterController.Move(moveDirection * (movementSpeed * Time.deltaTime));
-             
-            // 'Physics' behavior.
-            
+
             // First we check if the player is on the ground or not.
             // If the player is not touching the ground, we are gradually adding velocity downward
             // to make the player fall.
             // If the player is touching the ground, we are applying a small downward force in order
             // to keep the player clamped to the ground.
-            if (!IsGrounded) 
+            if (!IsGrounded) {
                 velocity.y += Physics.gravity.y * Time.deltaTime;
-            else 
+            }
+            else {
                 velocity = new Vector3(0, -2, 0);
+            }
 
             // Lastly, we just apply the physics to the player.
             _characterController.Move(velocity * Time.deltaTime);

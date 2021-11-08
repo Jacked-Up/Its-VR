@@ -1,5 +1,6 @@
-// This script was updated on 10/31/2021 by Jack Randolph.
+// This script was updated on 11/8/2021 by Jack Randolph.
 
+using System;
 using System.Collections.Generic;
 using ItsVR.Interaction;
 using ItsVR.Player;
@@ -14,10 +15,10 @@ namespace ItsVR_Samples.Interaction {
         #region Variables
 
         /// <summary>
-        /// The radius of the sphere cast.
+        /// The width of the line renderer.
         /// </summary>
-        [Tooltip("The radius of the sphere cast.")]
-        public float castRadius = 0.1f;
+        [Tooltip("The width of the line renderer.")]
+        public float rayWidth = 0.05f;
 
         /// <summary>
         /// The maximum cast distance the interactor can sphere cast.
@@ -76,6 +77,11 @@ namespace ItsVR_Samples.Interaction {
             _lineRenderer = GetComponent<LineRenderer>();
         }
 
+        private void OnDisable() {
+            if (_lineRenderer != null)
+                _lineRenderer.enabled = false;
+        }
+
         private void Update() {
             _lineRenderer.enabled = false;
             
@@ -86,6 +92,7 @@ namespace ItsVR_Samples.Interaction {
             var castA = false;
             var castB = false;
             var worldHit = new RaycastHit();
+            var grabPointIsAlreadyAssociated = false;
             Transform hitTransform = null;
             VRInteractable interactable = null;
             
@@ -96,6 +103,11 @@ namespace ItsVR_Samples.Interaction {
                 if (castA) {
                     hitTransform = interactableHit.collider.transform;
                     interactable = hitTransform.GetComponentInParent<VRInteractable>();
+
+                    if (interactable != null && interactable.IsAttachmentPointAssociated(hitTransform)) {
+                        grabPointIsAlreadyAssociated = true;
+                        interactable = null;
+                    }
                 }
             }
             
@@ -110,9 +122,9 @@ namespace ItsVR_Samples.Interaction {
 
             if (associatedInteractable != null) return;
             
-            _lineRenderer.enabled = true;
-            _lineRenderer.colorGradient = castA ? validColor : invalidColor;
-            _lineRenderer.widthCurve = AnimationCurve.Linear(0f, castRadius / 2f, 1f, castRadius);
+            _lineRenderer.enabled = castA || castB;
+            _lineRenderer.colorGradient = castA ? !grabPointIsAlreadyAssociated ? validColor : invalidColor : invalidColor;
+            _lineRenderer.widthCurve = AnimationCurve.Linear(0f, rayWidth / 2f, 1f, rayWidth);
             
             var positions = new List<Vector3> {
                 selfPosition,

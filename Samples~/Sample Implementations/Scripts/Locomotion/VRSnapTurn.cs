@@ -1,4 +1,4 @@
-// This script was updated on 10/30/2021 by Jack Randolph.
+// This script was updated on 11/8/2021 by Jack Randolph.
 
 using ItsVR.Player;
 using UnityEngine;
@@ -47,6 +47,7 @@ namespace ItsVR_Samples.Locomotion {
         }
 
         private void Update() {
+            // Bail if the input controller is null.
             if (inputController == null) return;
             
             // The debounce feature allows the player to hold the joystick to one side

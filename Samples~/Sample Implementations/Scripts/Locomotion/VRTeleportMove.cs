@@ -1,4 +1,4 @@
-﻿// This script was updated on 11/4/2021 by Jack Randolph.
+﻿// This script was updated on 11/8/2021 by Jack Randolph.
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -98,7 +98,13 @@ namespace ItsVR_Samples.Locomotion {
                 _vrRig = GetComponent<VRRig>();
         }
 
+        private void OnDisable() {
+            if (teleportRay != null)
+                teleportRay.enabled = false;
+        }
+        
         private void Update() {
+            // Bail if the input controller is null or the teleport ray is null.
             if (inputController == null || teleportRay == null) return;
 
             // First we cache the joysticks Y position.
@@ -137,7 +143,7 @@ namespace ItsVR_Samples.Locomotion {
         /// <summary>
         /// Teleports the player to the position.
         /// </summary>
-        /// <param name="toPosition"></param>
+        /// <param name="toPosition">The position to teleport to.</param>
         private void Teleport(Vector3 toPosition) {
             _vrRig.TransformRig(toPosition);
             inputController.Vibrate(0.2f, 0.1f);

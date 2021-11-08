@@ -1,4 +1,4 @@
-// This script was updated on 10/31/2021 by Jack Randolph.
+// This script was updated on 11/8/2021 by Jack Randolph.
 
 using ItsVR.Interaction;
 using ItsVR.Player;
@@ -50,6 +50,7 @@ namespace ItsVR_Samples.Interaction {
         }
 
         private void Update() {
+            // Bail if the controllers input references is null.
             if (_controller.inputReference == null) return;
 
             // Lets grab the interactable if the player depresses the grip and the associated

@@ -1,6 +1,8 @@
-// This script was updated on 11/4/2021 by Jack Randolph.
+// This script was updated on 11/8/2021 by Jack Randolph.
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using ItsVR.Interaction;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,11 +10,23 @@ using UnityEngine.InputSystem;
 
 namespace ItsVR_Samples.Interaction {
     [DisallowMultipleComponent]
-    [AddComponentMenu("It's VR/Samples/Interaction/Grabbable (Sample)")]
     [RequireComponent(typeof(Rigidbody))]
+    [AddComponentMenu("It's VR/Samples/Interaction/Grabbable (Sample)")]
     public class VRGrabbable : VRInteractable {
         #region Variables
 
+        /// <summary>
+        /// |Optional| If referenced, this will always be the primary attachment point of the object.
+        /// </summary>
+        [Tooltip("|Optional| If referenced, this will always be the primary attachment point of the object.")]
+        public Transform baseAttachmentPoint;
+        
+        /// <summary>
+        /// The calculation method used while holding the object with two hands.
+        /// </summary>
+        [Tooltip("The calculation method used while holding the object with two hands.")]
+        public CalculationMethods defaultCalculationMethod = CalculationMethods.AutoDetect;
+        
         /// <summary>
         /// Objects twist bias while held by two interactors. 
         /// </summary>
@@ -39,19 +53,20 @@ namespace ItsVR_Samples.Interaction {
         /// <summary>
         /// Calculates the interactors attachment point position delta in world space.
         /// </summary>
-        /// <param name="interactor"></param>
+        /// <param name="attachmentPosition">Attachment point position.</param>
+        /// <param name="attachmentRotation">Attachment point rotation.</param>
         /// <returns></returns>
-        private Vector3 AttachPositionDelta(VRInteractor interactor) {
-            return interactor.attachmentPoint.position + interactor.attachmentPoint.rotation * _interactorLocalPosition;
+        private Vector3 CalculateAttachPosition(Vector3 attachmentPosition, Quaternion attachmentRotation) {
+            return attachmentPosition + attachmentRotation * _interactorLocalPosition;
         }
 
         /// <summary>
         /// Calculates the interactors attachment point rotation delta in world space.
         /// </summary>
-        /// <param name="interactor"></param>
+        /// <param name="attachmentRotation">Attachment point position.</param>
         /// <returns></returns>
-        private Quaternion AttachRotationDelta(VRInteractor interactor) {
-            return interactor.attachmentPoint.rotation * _interactorLocalRotation;
+        private Quaternion CalculateAttachRotation(Quaternion attachmentRotation) {
+            return attachmentRotation * _interactorLocalRotation;
         }
 
         private Rigidbody _rigidbody;
@@ -60,7 +75,10 @@ namespace ItsVR_Samples.Interaction {
         private Vector3 _interactorLocalPosition;
         private Quaternion _interactorLocalRotation;
         private Vector3 _lastWorldPosition;
-
+        private Vector3 _currentPositionDelta;
+        private CalculationMethods _currentCalculationMethod;
+        public enum CalculationMethods { AutoDetect, FrontToBack, RightToLeft }
+        
         #endregion
 
         private void OnEnable() {
@@ -77,19 +95,31 @@ namespace ItsVR_Samples.Interaction {
         }
 
         private void LateUpdate() {
-            _lastWorldPosition = transform.position;
+            _lastWorldPosition = _currentPositionDelta;
         }
 
         public override void Associate(VRInteractor interactor, Transform interactableAttachmentPoint) {
+            // Bail if the grabbable is grabbed and the object cannot be held by two hands.
             if (!allowTwoHandGrab && IsGrabbed) return;
 
+            // This is the interactable attachment point to associate with the interactable.
+            var interactableAttachmentPointToAssociate = interactableAttachmentPoint;
+            
             if (!IsGrabbed) {
+                // Set the interactable attachment point to associate to the base attachment
+                // point if one is referenced.
+                if (baseAttachmentPoint != null) 
+                    interactableAttachmentPointToAssociate = baseAttachmentPoint;
+
+                // Cache rigidbody properties.
                 _rbOldIsKinematic = _rigidbody.isKinematic;
                 _rbOldCollisionDetectionMode = _rigidbody.collisionDetectionMode;
 
+                // Set rigidbody properties.
                 _rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
                 _rigidbody.isKinematic = true;
 
+                // Disable all colliders on the grabbable.
                 var colliders = GetComponentsInChildren<Collider>();
                 if (colliders.Length == 0) return;
                 foreach (var col in colliders) {
@@ -99,32 +129,68 @@ namespace ItsVR_Samples.Interaction {
                 
                 grabbableEvents.grabEntered.Invoke();
             }
-
-            base.Associate(interactor, interactableAttachmentPoint);
+            
+            base.Associate(interactor, interactableAttachmentPointToAssociate);
             grabbableEvents.grabOccured.Invoke();
+
+            // Bail if the grabbable is held by one hand.
+            if (associatedInteractors.Count <= 1) return;
+            
+            // Here's where we determine the two hand hold calculation method.
+            if (defaultCalculationMethod == CalculationMethods.AutoDetect) {
+                // First we calculate the x and z distances.
+                var mainLocalPos = MainAttachmentPoint.localPosition;
+                var otherLocalPos = interactableAttachmentPoint.localPosition;
+                var xDist = Mathf.Abs(mainLocalPos.x - otherLocalPos.x);
+                var zDist = Mathf.Abs(mainLocalPos.z - otherLocalPos.z);
+
+                // If the x distance is greater than the z distance, set the calculation
+                // method to right to left.
+                if (xDist > zDist)
+                    _currentCalculationMethod = CalculationMethods.RightToLeft;
+                // If the z distance is greater than the x distance, set the calculation
+                // method to front to back.
+                else if (zDist > xDist)
+                    _currentCalculationMethod = CalculationMethods.FrontToBack;
+                // If both conditions aren't met, then the calculation method is set to
+                // front to back by default.
+                else {
+                    Debug.LogError("[VR Grabbable] Could not determine a calculation method.", this);
+                    _currentCalculationMethod = CalculationMethods.FrontToBack;
+                }
+            }
+            else {
+                _currentCalculationMethod = defaultCalculationMethod;
+            }
         }
 
         public override void Dissociate(VRInteractor interactor) {
             base.Dissociate(interactor);
             grabbableEvents.releaseOccured.Invoke();
-            
-            if (IsGrabbed) return;
-            
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.angularVelocity = Vector3.zero;
-            _rigidbody.isKinematic = _rbOldIsKinematic;
-            _rigidbody.collisionDetectionMode = _rbOldCollisionDetectionMode;
 
+            // Bail if the grabbable is still held.
+            if (IsGrabbed) {
+                // Set the main attachment point to the main attachment point.
+                if (baseAttachmentPoint != null)
+                    MainAttachmentPoint = baseAttachmentPoint;
+                
+                return;
+            }
+
+            // Reenable all of the colliders on the grabbable.
             var colliders = GetComponentsInChildren<Collider>();
             if (colliders.Length == 0) return;
             foreach (var col in colliders) {
                 if (col == null || col.isTrigger) continue;
                 col.enabled = true;
             }
-
-            var self = transform;
-            _rigidbody.velocity = Vector3.Scale(self.position - _lastWorldPosition, self.localScale) / Time.deltaTime;
-
+            
+            // Set rigidbody properties.
+            _rigidbody.velocity = Vector3.Scale(_currentPositionDelta - _lastWorldPosition, transform.localScale) / Time.deltaTime;
+            _rigidbody.angularVelocity = Vector3.zero;
+            _rigidbody.isKinematic = _rbOldIsKinematic;
+            _rigidbody.collisionDetectionMode = _rbOldCollisionDetectionMode;
+            
             grabbableEvents.grabExited.Invoke();
         }
 
@@ -132,7 +198,11 @@ namespace ItsVR_Samples.Interaction {
         /// Updates when the tracking is updated.
         /// </summary>
         private void Track() {
-            if (!IsGrabbed) return;
+            // Bail if the grabbable is not grabbed.
+            if (!IsGrabbed) {
+                _currentPositionDelta = transform.position;
+                return;
+            }
 
             // Here's where we calculate the attachment point offset.
             var primaryAttachPosition = MainAttachmentPoint.position;
@@ -147,20 +217,66 @@ namespace ItsVR_Samples.Interaction {
             _interactorLocalPosition = localAttachOffset;
             _interactorLocalRotation = Quaternion.Inverse(Quaternion.Inverse(transform.rotation) * MainAttachmentPoint.rotation);  
             
-            // Here's where we calculate the position of the grabbable. The math may look complex,
-            // but it's actually simple. We are simply calculating the attachment point offset and using
-            // it as a pivot.
-            // First we check if there is more than one hand holding the grabbable. If there is only
-            // one hand, we follow the position of that controller. If there's two hands, we will lerp
-            // the position to the middle of the two controllers.
-            transform.position = associatedInteractors.Count > 1 
-                ? Vector3.Lerp(AttachPositionDelta(MainInteractor), AttachPositionDelta(OtherInteractor(1)), 0.5f) 
-                : AttachPositionDelta(MainInteractor);
-            
-            // Here's where we calculate the rotation of the grabbable.
-            transform.rotation = associatedInteractors.Count > 1
-                ? Quaternion.LookRotation(MainInteractor.attachmentPoint.position - OtherInteractor(1).attachmentPoint.position, Vector3.Lerp(MainInteractor.attachmentPoint.forward, OtherInteractor(1).attachmentPoint.forward, twistBias))
-                : AttachRotationDelta(MainInteractor);
+            var positionDelta = Vector3.zero;
+            var rotationDelta = Quaternion.identity;
+
+            // If the interactable is grabbed by more than one interactor (hands) then we should
+            // calculate the position as if the interactable is being held by two hands, otherwise
+            // it should calculate the position as if the interactable is being held by one hand.
+            if (associatedInteractors.Count > 1) {
+                // First we create a list of all the grab points.
+                var points = new List<Vector3> {
+                    MainInteractor.attachmentPoint.position,
+                    OtherInteractor(1).attachmentPoint.position
+                };
+
+                // The position is the middle of all the interactors.
+                positionDelta = MiddlePoint(points);
+
+                // Caching interactor positions and attach transforms for a more efficient calculation.
+                var aInteractorAttach = MainInteractor.attachmentPoint;
+                var bInteractorAttach = OtherInteractor(1).attachmentPoint;
+                var aInteractorPos = aInteractorAttach.position;
+                var bInteractorPos = bInteractorAttach.position;
+                
+                // Calculate rotation of the interactable using the specified calculation method.
+                rotationDelta = _currentCalculationMethod switch {
+                    CalculationMethods.FrontToBack => Quaternion.LookRotation((bInteractorPos - aInteractorPos).normalized, Vector3.Lerp(aInteractorAttach.forward, bInteractorAttach.forward, twistBias).normalized),
+                    CalculationMethods.RightToLeft => Quaternion.LookRotation(Vector3.Cross(bInteractorPos - aInteractorPos, (aInteractorAttach.forward + bInteractorAttach.forward) / 2).normalized, Vector3.Cross(aInteractorPos - bInteractorPos, (-aInteractorAttach.up + -bInteractorAttach.up) / 2).normalized),
+                    _ => rotationDelta
+                };
+            }
+            else {
+                // The position is the position of the interactor.
+                positionDelta = MainInteractor.attachmentPoint.position;
+                
+                // The rotation is the rotation of the interactor.
+                rotationDelta = Quaternion.LookRotation(-MainInteractor.attachmentPoint.up, MainInteractor.attachmentPoint.forward);
+            }
+
+            // Lastly we apply all of the calculations to the position and the rotation
+            // of the interactable.
+            transform.position = CalculateAttachPosition(positionDelta, rotationDelta);
+            transform.rotation = CalculateAttachRotation(rotationDelta);
+
+            // Here's where we are saving the position delta so that when the player releases
+            // the grabbable, the velocity is calculated correctly.
+            _currentPositionDelta = CalculateAttachPosition(positionDelta, rotationDelta);
+        }
+
+        /// <summary>
+        /// Returns the center point of all the vectors.
+        /// </summary>
+        /// <param name="vectors">A list of all the vectors to calculate the mid point of.</param>
+        /// <returns>The middle vector between all of the vectors.</returns>
+        private static Vector3 MiddlePoint(IReadOnlyCollection<Vector3> vectors) {
+            // Bail if no vectors were input.
+            if (vectors.Count == 0)
+                return Vector3.zero;
+
+            var sum = Vector3.zero;
+            sum = vectors.Aggregate(sum, (current, vector) => current + vector);
+            return sum / vectors.Count;
         }
     }
 
