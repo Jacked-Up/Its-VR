@@ -36,7 +36,7 @@ namespace ItsVR.Interaction {
         /// <summary>
         /// Associates the interactor with the interactable.
         /// </summary>
-        /// <param name="interactable"></param>
+        /// <param name="interactable">The interactable to associate with.</param>
         public virtual void Associate(VRInteractable interactable) {
             // We must dissociate the associated interactor before we
             // can associate a new interactor.
@@ -50,7 +50,7 @@ namespace ItsVR.Interaction {
         /// <summary>
         /// Disassociates the interactor from the interactable.
         /// </summary>
-        /// <param name="interactable"></param>
+        /// <param name="interactable">The interactable to dissociate from.</param>
         public virtual void Dissociate(VRInteractable interactable) {
             // If the interactable is not associated with the interactor,
             // the developer attempted to dissociate an interactable which

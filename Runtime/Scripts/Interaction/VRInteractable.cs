@@ -1,4 +1,4 @@
-// This script was updated on 10/26/2021 by Jack Randolph.
+// This script was updated on 11/4/2021 by Jack Randolph.
 
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +16,16 @@ namespace ItsVR.Interaction {
         public List<AssociatedInteractor> associatedInteractors = new List<AssociatedInteractor>();
 
         /// <summary>
-        /// Returns the main interactor in the associated interactors list. Returns null if no main interactor exists.
+        /// The main interactor in the associated interactors list.
         /// </summary>
         /// <returns></returns>
-        public VRInteractor MainInteractor => associatedInteractors.Count != 0 ? associatedInteractors[0].interactor : null;
+        public VRInteractor MainInteractor {
+            get => associatedInteractors.Count != 0 ? associatedInteractors[0].interactor : null;
+            set {
+                if (associatedInteractors.Count > 0)
+                    associatedInteractors[0].interactor = value;
+            }
+        }
 
         /// <summary>
         /// Returns the interactor from the associated interactors list at the index. Returns null if the interactor doesn't exist.
@@ -31,11 +37,16 @@ namespace ItsVR.Interaction {
         }
         
         /// <summary>
-        /// Returns the main interactable attachment point (Not to be confused with the interactor attachment point) in the associated interactors list. Returns null if no main interactable attachment point exists.
+        /// The main interactable attachment point (Not to be confused with the interactor attachment point) in the associated interactors list.
         /// </summary>
         /// <returns></returns>
-        public Transform MainAttachmentPoint => associatedInteractors.Count != 0 ? associatedInteractors[0].attachmentPoint != null ? associatedInteractors[0].attachmentPoint : associatedInteractors[0].interactor.transform : null;
-
+        public Transform MainAttachmentPoint {
+            get => associatedInteractors.Count != 0 ? associatedInteractors[0].attachmentPoint != null ? associatedInteractors[0].attachmentPoint : associatedInteractors[0].interactor.transform : null;
+            set {
+                if (associatedInteractors.Count > 0) 
+                    associatedInteractors[0].attachmentPoint = value;
+            }
+        } 
         /// <summary>
         /// Returns the interactable attachment point (Not to be confused with the interactor attachment point) from the associated interactors list at the index. Returns null if the interactable attachment point doesn't exist.
         /// </summary>
@@ -80,8 +91,8 @@ namespace ItsVR.Interaction {
         /// <summary>
         /// Associates the interactor and interactable attachment point with the interactable.
         /// </summary>
-        /// <param name="interactor"></param>
-        /// <param name="interactableAttachmentPoint"></param>
+        /// <param name="interactor">The interactor to associate with.</param>
+        /// <param name="interactableAttachmentPoint">The attachment point the interactor attached to.</param>
         public virtual void Associate(VRInteractor interactor, Transform interactableAttachmentPoint) {
             // If the interactor the developer attempted to associate with this
             // interactable is already associated, the script will debug and let
@@ -110,6 +121,7 @@ namespace ItsVR.Interaction {
         /// <summary>
         /// Dissociates the interactor and interactable attachment point from the interactable.
         /// </summary>
+        /// <param name="interactor">The interactor to dissociate from.</param>>
         public virtual void Dissociate(VRInteractor interactor) {
             // If the interactor was not first associated with the interactable
             // then there is nothing to actually dissociate. 

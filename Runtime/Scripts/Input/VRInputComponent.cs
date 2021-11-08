@@ -1,5 +1,4 @@
-// This script was updated on 10/26/2021 by Jack Randolph.
-// This script is incomplete.
+// This script was updated on 11/4/2021 by Jack Randolph.
 
 using ItsVR.Scriptables;
 using UnityEngine;
@@ -9,7 +8,7 @@ using UnityEngine.InputSystem;
 namespace ItsVR.Input {
     [DisallowMultipleComponent]
     [HelpURL("https://jackedupstudios.com/vr-input-component")]
-    [AddComponentMenu("It's VR/Input/VR Input Component (Incomplete)")]
+    [AddComponentMenu("It's VR/Input/VR Input Component")]
     public class VRInputComponent : MonoBehaviour {
         #region Variables
         
@@ -92,9 +91,7 @@ namespace ItsVR.Input {
             else 
                 Debug.LogError("[VR Input Component] Cannot disable inputs as no input reference was referenced.", this);
         }
-
-        #region Input Events
-
+        
         private void TriggerPressed(InputAction.CallbackContext callbackContext) {
             inputEvents.trigger.triggerPressed.Invoke();
         }        
@@ -126,12 +123,8 @@ namespace ItsVR.Input {
         private void SecondaryButtonTouched(InputAction.CallbackContext callbackContext) {
             inputEvents.secondaryButton.secondaryButtonTouched.Invoke();
         }
-
-        #endregion
     }
-
-    #region Input Events Classes
-
+    
     [System.Serializable]
     public class InputEvents {
         /// <summary>
@@ -251,6 +244,4 @@ namespace ItsVR.Input {
         [Tooltip("Invoked when the secondary button is touched.")]
         public UnityEvent secondaryButtonTouched;
     }
-
-    #endregion
 }

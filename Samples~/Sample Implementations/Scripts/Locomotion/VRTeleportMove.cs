@@ -1,4 +1,4 @@
-﻿// This script was updated on 11/1/2021 by Jack Randolph.
+﻿// This script was updated on 11/8/2021 by Jack Randolph.
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -94,10 +94,17 @@ namespace ItsVR_Samples.Locomotion {
             if (teleportRay == null)
                 Debug.LogError("[VR Teleport Move] No line renderer was referenced. Please add one to the input controller.", this);
 
-            _vrRig = GetComponent<VRRig>();
+            if (_vrRig == null)
+                _vrRig = GetComponent<VRRig>();
         }
 
+        private void OnDisable() {
+            if (teleportRay != null)
+                teleportRay.enabled = false;
+        }
+        
         private void Update() {
+            // Bail if the input controller is null or the teleport ray is null.
             if (inputController == null || teleportRay == null) return;
 
             // First we cache the joysticks Y position.
@@ -136,7 +143,7 @@ namespace ItsVR_Samples.Locomotion {
         /// <summary>
         /// Teleports the player to the position.
         /// </summary>
-        /// <param name="toPosition"></param>
+        /// <param name="toPosition">The position to teleport to.</param>
         private void Teleport(Vector3 toPosition) {
             _vrRig.TransformRig(toPosition);
             inputController.Vibrate(0.2f, 0.1f);
@@ -176,6 +183,14 @@ namespace ItsVR_Samples.Locomotion {
                 _invalidPoint = true;
             }
 
+            // Checking that the player isn't too tall for the teleport target. To check this,
+            // we are casting upward from the teleport end point and checking that the player would
+            // fit.
+            if (Physics.Raycast(_endPoint, Vector3.up, _vrRig.Height, validLayers)) {
+                teleportRay.colorGradient = invalidTeleport;
+                _invalidPoint = true;
+            }
+            
             // Our starting point of the ray is the controllers position.
             _startPoint = controller.position;
             

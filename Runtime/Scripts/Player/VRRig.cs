@@ -1,4 +1,4 @@
-// This script was updated on 10/26/2021 by Jack Randolph.
+// This script was updated on 11/4/2021 by Jack Randolph.
 
 using UnityEngine;
 
@@ -134,6 +134,7 @@ namespace ItsVR.Player {
         /// <summary>
         /// Moves the rig to the position.
         /// </summary>
+        /// <param name="position">The position to move the rig to.</param>>
         public void TransformRig(Vector3 position) {
             if (head == null) {
                 Debug.LogError("[VR Rig] Cannot transform rig because no head object was referenced.", this);
@@ -141,13 +142,14 @@ namespace ItsVR.Player {
             }
             
             RigTransformed?.Invoke();
-            transform.position = position - FeetLocalPosition;
+            var root = transform.root;
+            root.position = position + (root.position - FeetPosition);
         }
         
         /// <summary>
         /// Rotates the rig by using the head as a pivot.
         /// </summary>
-        /// <param name="angle"></param>
+        /// <param name="angle">The angle to turn the rig.</param>
         public void RotateRig(float angle) {
             if (head == null) {
                 Debug.LogError("[VR Rig] Cannot rotate rig because no head object was referenced.", this);

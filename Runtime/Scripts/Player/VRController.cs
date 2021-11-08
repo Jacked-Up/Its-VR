@@ -1,6 +1,5 @@
-// This script was updated on 10/30/2021 by Jack Randolph.
+// This script was updated on 11/4/2021 by Jack Randolph.
 
-using System;
 using ItsVR.Scriptables;
 using UnityEngine;
 
@@ -19,12 +18,11 @@ namespace ItsVR.Player {
         public VRInputReferences inputReference;
 
         /// <summary>
-        /// The hand side which this controller is. This can be automatically set by naming the object either 'left hand' or 'right hand'.
+        /// The hand side this controller is. This can be automatically set by naming the object either 'left hand' or 'right hand'.
         /// </summary>
-        [Tooltip("The hand side which this controller is. This can be automatically set by naming the object either 'left hand' or 'right hand'.")]
-        public HandSides handSide;
-
-        public enum HandSides { Left, Right }
+        [Tooltip("The hand side this controller is. This can be automatically set by naming the object either 'left hand' or 'right hand'.")]
+        public Hand handSide;
+        
         private VRTracker _tracker;
         
         #endregion
@@ -40,43 +38,27 @@ namespace ItsVR.Player {
         /// <summary>
         /// Vibrates this controller at the amplitude for the duration.
         /// </summary>
-        /// <param name="amplitude"></param>
-        /// <param name="duration"></param>
+        /// <param name="amplitude">The power setting of the haptic motor. Amplitude value is between 0-1.</param>
+        /// <param name="duration">How long the haptic device vibrates.</param>
         public void Vibrate(float amplitude, float duration) {
-            inputReference.universalInputs?.SendImpulse(amplitude, duration);
-        }
-
-        /// <summary>
-        /// The speed of the controller in local space.
-        /// </summary>
-        public float Speed => _tracker.LocalSpeed;
-
-        /// <summary>
-        /// The velocity of the controller in local space.
-        /// </summary>
-        public Vector3 Velocity => _tracker.LocalVelocity;
-
-        /// <summary>
-        /// The angular velocity of the controller in local space.
-        /// </summary>
-        public Vector3 AngularVelocity => _tracker.LocalAngularVelocity;
-        
-        /// <summary>
-        /// (Incomplete) Returns the pointer direction of the controller.
-        /// </summary>
-        public Vector3 PointerDirection {
-            get {
-                return -transform.up;
+            if (amplitude <= 0f) {
+                Debug.LogWarning("[VR Controller] You attempted to vibrated the controller with an amplitude of zero.");
+                return;
             }
+            
+            if (amplitude > 1f)
+                amplitude = 1f;
+
+            inputReference.universalInputs?.SendImpulse(amplitude, duration);
         }
 
         #region Editor
 
         private void OnValidate() {
             if (name.Contains("Left") || name.Contains("left")) 
-                handSide = HandSides.Left;
+                handSide = Hand.Left;
             else if (name.Contains("Right") || name.Contains("right")) 
-                handSide = HandSides.Right;
+                handSide = Hand.Right;
         }
 
         private void OnDrawGizmos() {
@@ -92,10 +74,10 @@ namespace ItsVR.Player {
             
             if (rig == null) return;
             
-            transform.localPosition = Vector3.Scale(new Vector3(handSide == HandSides.Right ? 0.5f : -0.5f, heightOffset / 2, 0.75f), new Vector3(1, 1, 1));
+            transform.localPosition = Vector3.Scale(new Vector3(handSide == Hand.Right ? 0.5f : -0.5f, heightOffset / 2, 0.75f), new Vector3(1, 1, 1));
             
             // Draw arm.
-            Gizmos.color = handSide == HandSides.Right ? Color.green : Color.blue;
+            Gizmos.color = handSide == Hand.Right ? Color.green : Color.blue;
             Gizmos.DrawLine(selfPosition, Vector3.Scale(new Vector3(0, heightOffset / 1.45f, 0), selfScale) + rigPosition);
             
             if (GetComponentInChildren<MeshRenderer>() || GetComponentInChildren<MeshFilter>()) return;

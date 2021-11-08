@@ -1,4 +1,4 @@
-﻿// This script was updated on 10/26/2021 by Jack Randolph.
+﻿// This script was updated on 11/8/2021 by Jack Randolph.
 
 using ItsVR.Player;
 using UnityEngine;
@@ -47,8 +47,10 @@ namespace ItsVR_Samples.Locomotion {
         /// Runs the rotation behavior.
         /// </summary>
         private void RotateUpdate() {
+            // Bail if the input controller is null.
             if (inputController == null) return;
 
+            // Cache the joystick x position.
             var joystickPositionX = inputController.inputReference.universalInputs.JoystickPosition.x;
             
             // This break only ensures that the player is intentionally flicking the joystick.
