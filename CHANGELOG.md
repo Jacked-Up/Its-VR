@@ -1,7 +1,7 @@
 ## Info
 
     Version: 0.0.3
-    Released: 11/--/2021
+    Released: 11/8/2021
 
 ## Releases
 
