@@ -1,19 +1,25 @@
 ## Info
-    
-    It's VR Changelog.
 
-    Current Version: 0.0.2
-    Update Time: 11/1/2021
+    Version: 0.0.3
+    Released: 11/--/2021
 
 ## Releases
 
 ## 0.0.3
 
-- Added teleport height check at teleport target
+- Added teleport move sample height check at teleport target
 - Added local space and world space velocity variable (Vector3) to VRTracker.cs
 - Added local space and world space speed variable (Float) to VRTracker.cs
 - HMD specific inputs seperated by classes on VRInputReferences.cs (Universal, System, Oculus, Valve, Vive)
- 
+- You can now set the main interactor and main interactable attachment point properties in VRInteractable.cs
+- Added front to back and right to left holding calculations in VRGrabbable.cs
+- Added Button sample
+- Added interactor selection panel in the interaction sample scene
+- Fixed teleport move sample positioning
+- Added Right hand controller and Left hand controller properties on ItsVR.cs
+- Finalized the Interaction Sample scene
+- Finalized the Locomotion Sample scene
+
 ## 0.0.2
 
 - Added snap turn locomotion sample
