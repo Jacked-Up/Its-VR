@@ -1,17 +1,17 @@
---- License
+Copyright 2021 - Jacked Up Studios
 
-Copyright (c) 2021 Jacked Up Studios
+Permission is hereby granted, free of charge, to any person obtaining 
+a copy of It's VR and its associated documentation, to deal in the Software
+without restriction, including without limitation the rights to use, copy, 
+and modify the Software, and to permit persons to whom the Software is furnished
+to do so, subject to the following conditions: 
 
-By downloading It's VR from a Jacked Up Studios, you are hereby
-granted permission to use It's VR and its provided documentation 
-provided. You may not copy, modify, merge, publish, distribute,
-sublicense, or sell this software in any way.
-
-The copyright notice applies to all of It's VR.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
