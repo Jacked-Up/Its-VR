@@ -1,8 +1,8 @@
-// This script was updated on 11/8/2021 by Jack Randolph.
+// This script was updated on 11/10/2021 by Jack Randolph.
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using ItsVR;
 using ItsVR.Interaction;
 using UnityEngine;
 using UnityEngine.Events;
@@ -75,7 +75,7 @@ namespace ItsVR_Samples.Interaction {
         private Vector3 _interactorLocalPosition;
         private Quaternion _interactorLocalRotation;
         private Vector3 _lastWorldPosition;
-        private Vector3 _currentPositionDelta;
+        private Quaternion _lastWorldRotation;
         private CalculationMethods _currentCalculationMethod;
         public enum CalculationMethods { AutoDetect, FrontToBack, RightToLeft }
         
@@ -94,8 +94,10 @@ namespace ItsVR_Samples.Interaction {
             Track();
         }
 
-        private void LateUpdate() {
-            _lastWorldPosition = _currentPositionDelta;
+        private void FixedUpdate() {
+            var self = transform;
+            _lastWorldPosition = self.position;
+            _lastWorldRotation = self.rotation;
         }
 
         public override void Associate(VRInteractor interactor, Transform interactableAttachmentPoint) {
@@ -186,8 +188,11 @@ namespace ItsVR_Samples.Interaction {
             }
             
             // Set rigidbody properties.
-            _rigidbody.velocity = Vector3.Scale(_currentPositionDelta - _lastWorldPosition, transform.localScale) / Time.deltaTime;
-            _rigidbody.angularVelocity = Vector3.zero;
+            var self = transform;
+            var selfLocalScale = self.localScale;
+            _rigidbody.velocity = Vector3.Scale(ItsMath.Velocity(self.position, _lastWorldPosition), selfLocalScale);
+            _rigidbody.angularVelocity = Vector3.Scale(ItsMath.AngularVelocity(self.rotation, _lastWorldRotation), selfLocalScale);
+            
             _rigidbody.isKinematic = _rbOldIsKinematic;
             _rigidbody.collisionDetectionMode = _rbOldCollisionDetectionMode;
             
@@ -199,10 +204,7 @@ namespace ItsVR_Samples.Interaction {
         /// </summary>
         private void Track() {
             // Bail if the grabbable is not grabbed.
-            if (!IsGrabbed) {
-                _currentPositionDelta = transform.position;
-                return;
-            }
+            if (!IsGrabbed) return;
 
             // Here's where we calculate the attachment point offset.
             var primaryAttachPosition = MainAttachmentPoint.position;
@@ -231,7 +233,7 @@ namespace ItsVR_Samples.Interaction {
                 };
 
                 // The position is the middle of all the interactors.
-                positionDelta = MiddlePoint(points);
+                positionDelta = ItsMath.MiddlePoint(points);
 
                 // Caching interactor positions and attach transforms for a more efficient calculation.
                 var aInteractorAttach = MainInteractor.attachmentPoint;
@@ -258,25 +260,6 @@ namespace ItsVR_Samples.Interaction {
             // of the interactable.
             transform.position = CalculateAttachPosition(positionDelta, rotationDelta);
             transform.rotation = CalculateAttachRotation(rotationDelta);
-
-            // Here's where we are saving the position delta so that when the player releases
-            // the grabbable, the velocity is calculated correctly.
-            _currentPositionDelta = CalculateAttachPosition(positionDelta, rotationDelta);
-        }
-
-        /// <summary>
-        /// Returns the center point of all the vectors.
-        /// </summary>
-        /// <param name="vectors">A list of all the vectors to calculate the mid point of.</param>
-        /// <returns>The middle vector between all of the vectors.</returns>
-        private static Vector3 MiddlePoint(IReadOnlyCollection<Vector3> vectors) {
-            // Bail if no vectors were input.
-            if (vectors.Count == 0)
-                return Vector3.zero;
-
-            var sum = Vector3.zero;
-            sum = vectors.Aggregate(sum, (current, vector) => current + vector);
-            return sum / vectors.Count;
         }
     }
 

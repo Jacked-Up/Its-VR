@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194ef3f63c76177468917c59a46d41aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackerReference: {fileID: 11400000, guid: 8b7e887617e53ee4eb019d7eeb16d319, type: 2}
+  trackerContainer: {fileID: 0}
   trackingConstraint: 0
   updateMode: 0
   positionOffset: {x: 0, y: 0, z: 0}
@@ -63,8 +63,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1d3624b0fedc94f9aafb2adc50fa3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputReference: {fileID: 11400000, guid: 9a246bef4c7c9f04bb2ee2a7c59956e7, type: 2}
+  inputContainer: {fileID: 11400000, guid: 9a246bef4c7c9f04bb2ee2a7c59956e7, type: 2}
   handSide: 0
+  connectedTracker: {fileID: 0}
 --- !u!135 &1697956269539106159
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194ef3f63c76177468917c59a46d41aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackerReference: {fileID: 11400000, guid: 3da9382407f1f614caf8fa6dd2c35350, type: 2}
+  trackerContainer: {fileID: 0}
   trackingConstraint: 0
   updateMode: 0
   positionOffset: {x: 0, y: 0, z: 0}
@@ -402,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194ef3f63c76177468917c59a46d41aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackerReference: {fileID: 11400000, guid: 619ed0ba8f68a564e97fea2bca98866c, type: 2}
+  trackerContainer: {fileID: 0}
   trackingConstraint: 0
   updateMode: 0
   positionOffset: {x: 0, y: 0, z: 0}
@@ -419,8 +420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1d3624b0fedc94f9aafb2adc50fa3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputReference: {fileID: 11400000, guid: 676be7619a0758d448c9ded72eddffd1, type: 2}
+  inputContainer: {fileID: 11400000, guid: 676be7619a0758d448c9ded72eddffd1, type: 2}
   handSide: 1
+  connectedTracker: {fileID: 0}
 --- !u!135 &193202107584262587
 SphereCollider:
   m_ObjectHideFlags: 0

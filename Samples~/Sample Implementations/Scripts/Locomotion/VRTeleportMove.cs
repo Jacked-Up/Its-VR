@@ -108,7 +108,7 @@ namespace ItsVR_Samples.Locomotion {
             if (inputController == null || teleportRay == null) return;
 
             // First we cache the joysticks Y position.
-            var joystickPositionY = inputController.inputReference.universalInputs.JoystickPosition.y;
+            var joystickPositionY = inputController.inputContainer.universalInputs.JoystickPosition.y;
 
             // Let check to see if the player has flicked the joystick in the initialization position.
             // If they have, we can initialize the teleport. If on the next frame the player has released,
@@ -145,7 +145,7 @@ namespace ItsVR_Samples.Locomotion {
         /// </summary>
         /// <param name="toPosition">The position to teleport to.</param>
         private void Teleport(Vector3 toPosition) {
-            _vrRig.TransformRig(toPosition);
+            _vrRig.PositionRig(toPosition);
             inputController.Vibrate(0.2f, 0.1f);
         }
 

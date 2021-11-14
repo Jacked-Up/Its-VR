@@ -111,11 +111,11 @@ namespace ItsVR_Samples.Interaction {
                 }
             }
             
-            if (interactable != null && associatedInteractable == null && _controller.inputReference.universalInputs.GripDepress > 0.65f) {
+            if (interactable != null && associatedInteractable == null && _controller.inputContainer.universalInputs.GripDepress > 0.65f) {
                 interactable.Associate(this, hitTransform);
                 associatedInteractable = interactable;
             }
-            else if (associatedInteractable != null && _controller.inputReference.universalInputs.GripDepress < 0.65f) {
+            else if (associatedInteractable != null && _controller.inputContainer.universalInputs.GripDepress < 0.65f) {
                 associatedInteractable.Dissociate(this);
                 associatedInteractable = null;
             }

@@ -106,7 +106,7 @@ namespace ItsVR_Samples.Locomotion {
             _characterController.center = _vrRig.HipLocalPosition;
 
             // First, we fetch the position of the joystick.
-            var joystickInputPosition = inputController.inputReference.universalInputs.JoystickPosition;
+            var joystickInputPosition = inputController.inputContainer.universalInputs.JoystickPosition;
             
             // Secondly, we get a transform which will define what is forward, backwards, left, and right for the player. 
             var motionVectorsReference = moveVector == MoveVectors.Head ? _vrRig.head : inputController.transform;
@@ -114,7 +114,7 @@ namespace ItsVR_Samples.Locomotion {
             // (Optional) A speed to move the player at. Here, we are seeing if the joystick is pressed in or not.
             // If the joystick is pushed in, we are making the player sprint. If the player is not pushing the
             // joystick, we are making the player walk.
-            var movementSpeed = inputController.inputReference.universalInputs.JoystickPressed ? sprintSpeed : walkingSpeed;
+            var movementSpeed = inputController.inputContainer.universalInputs.JoystickPressed ? sprintSpeed : walkingSpeed;
             
             // Thirdly, we will combine all of the input and the defined direction vectors into one vector3.
             var moveDirection = motionVectorsReference.right * joystickInputPosition.x + motionVectorsReference.forward * joystickInputPosition.y;
