@@ -109,30 +109,6 @@ MonoBehaviour:
         m_Groups: 
         m_Action: Joystick Pressed
         m_Flags: 0
-    joystickTouched:
-      m_Name: Joystick Touched
-      m_Type: 1
-      m_ExpectedControlType: Button
-      m_Id: 8690349d-20f6-4769-8889-46f97bcc37e6
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: fb59cf9a-a8df-4805-a624-58896d908bea
-        m_Path: <OculusTouchController>{LeftHand}/thumbstickTouched
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Joystick Touched
-        m_Flags: 0
-      - m_Name: 
-        m_Id: ac55d730-8caa-4f30-9fd2-e79ee4a4af23
-        m_Path: <ValveIndexController>{LeftHand}/thumbstickTouched
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Joystick Touched
-        m_Flags: 0
     primaryButtonPressed:
       m_Name: Primary Button Pressed
       m_Type: 1
@@ -238,103 +214,38 @@ MonoBehaviour:
         m_Groups: 
         m_Action: System Pressed
         m_Flags: 0
-  oculusInputs:
+  metaInputs:
     triggerTouched:
       m_Name: Trigger Touched
       m_Type: 1
       m_ExpectedControlType: Button
-      m_Id: 58d03d53-e789-495b-86f7-b3edba31bb64
+      m_Id: c2ec150a-724d-459a-a3fb-53ace12b871f
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: f293e852-c398-43bb-986f-d72fe8724ab1
+        m_Id: 7973682a-0092-47d1-b603-d8d90c77b53f
         m_Path: <OculusTouchController>{LeftHand}/triggerTouched
         m_Interactions: 
         m_Processors: 
         m_Groups: 
         m_Action: Trigger Touched
         m_Flags: 0
-  indexInputs:
-    gripForce:
-      m_Name: Grip Force
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 53981146-3667-457f-8ef1-8dffb20c5d0f
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 0c585381-208f-4e15-9602-210332443b14
-        m_Path: <ValveIndexController>{LeftHand}/gripForce
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Grip Force
-        m_Flags: 0
-    trackpadPosition:
-      m_Name: Trackpad Position
-      m_Type: 0
-      m_ExpectedControlType: Vector2
-      m_Id: 0fd8531d-c3a4-486c-a4a7-5be8a39ae434
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 95710b13-bb84-4a98-bde3-9f84d4dc768c
-        m_Path: <ValveIndexController>{LeftHand}/trackpad
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Trackpad Position
-        m_Flags: 0
-    trackpadTouched:
-      m_Name: Trackpad Touched
+    joystickTouched:
+      m_Name: Joystick Touched
       m_Type: 1
       m_ExpectedControlType: Button
-      m_Id: 52c966b5-85ed-49e0-abb4-482a0be8747b
+      m_Id: 1a079451-0e3e-401c-a171-be69b8666372
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings:
       - m_Name: 
-        m_Id: fe98c77e-6e9d-4832-90d8-13a28030d935
-        m_Path: <ValveIndexController>{LeftHand}/trackpadTouched
+        m_Id: 9e6f3523-f6c0-4020-9c63-9b0335e07d4a
+        m_Path: <OculusTouchController>{LeftHand}/thumbstickTouched
         m_Interactions: 
         m_Processors: 
         m_Groups: 
-        m_Action: Trackpad Touched
-        m_Flags: 0
-    trackpadForce:
-      m_Name: Trackpad Force
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 549b77f1-4a94-427b-9f8f-bb77696b236e
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: 5ef9be3e-0918-44ea-b44a-c867653040c6
-        m_Path: <ValveIndexController>{LeftHand}/trackpadForce
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Trackpad Force
-        m_Flags: 0
-    triggerTouched:
-      m_Name: Trigger Touched
-      m_Type: 1
-      m_ExpectedControlType: Button
-      m_Id: c91dbe9e-8266-45bb-92c2-8420ca6a8d98
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 
-        m_Id: fe201566-7d09-4d0b-9fd8-c7ac8accfb1b
-        m_Path: <ValveIndexController>{LeftHand}/triggerTouched
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Trigger Touched
+        m_Action: Joystick Touched
         m_Flags: 0
   viveInputs:
     trackpadPosition:
@@ -384,4 +295,101 @@ MonoBehaviour:
         m_Processors: 
         m_Groups: 
         m_Action: Trackpad Touched
+        m_Flags: 0
+  valveInputs:
+    gripForce:
+      m_Name: Grip Force
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: e0592092-99e4-4fb4-9359-3448b5791ea3
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 9a20b1c2-f85d-433b-8358-f29da276f90a
+        m_Path: <ValveIndexController>{LeftHand}/gripForce
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Grip Force
+        m_Flags: 0
+    trackpadPosition:
+      m_Name: Trackpad Position
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: ffe02858-66ba-4497-9ab3-d038867c30c0
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 031446a6-8f8d-469e-99be-dffc030fb253
+        m_Path: <ValveIndexController>{LeftHand}/trackpad
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trackpad Position
+        m_Flags: 0
+    trackpadTouched:
+      m_Name: Trackpad Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: a0c1fd9d-e221-469e-b025-29b335bcf817
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: f288074d-a6fd-46ad-90f8-dfe5b3a9d780
+        m_Path: <ValveIndexController>{LeftHand}/trackpadTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trackpad Touched
+        m_Flags: 0
+    trackpadForce:
+      m_Name: Trackpad Force
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 47745a6e-46f9-4fa5-a542-c462cf566459
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 105dc25b-253b-4808-be10-dff198aa7899
+        m_Path: <ValveIndexController>{LeftHand}/trackpadForce
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trackpad Force
+        m_Flags: 0
+    triggerTouched:
+      m_Name: Trigger Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: d2ddf35a-8841-4cb4-9a4b-6a43de0a7a96
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 0e1fa7ae-31ac-4e3a-a95a-fc422f2c7854
+        m_Path: <ValveIndexController>{LeftHand}/triggerTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trigger Touched
+        m_Flags: 0
+    joystickTouched:
+      m_Name: Joystick Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: a011ecbd-885c-4abd-b3de-ecfd4144f881
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 060a274b-13ee-4b13-9b6b-e08f408f6824
+        m_Path: <ValveIndexController>{LeftHand}/thumbstickTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Joystick Touched
         m_Flags: 0

@@ -1,9 +1,29 @@
 ## Info
 
-    Version: 0.0.3
-    Released: 11/8/2021
+    Version: 0.0.4
+    Released: 11/14/2021
 
 ## Releases
+
+## 0.0.4
+
+- Moved joystick touched input from universal to its respective input classes (Meta and Index)
+- Removed the device position and rotation static references from VRInputHandler.cs as it was unnecessary
+- Renamed class ItsVR to ItsSystems
+- Added class ItsMath
+- Add velocity and angular velocity calculations
+- Added middle point calculation to ItsMath.cs
+- Changed OculusInputs class to MetaInputs class
+- Changed IndexInputs class to ValveInputs class
+- Added summaries for all classes
+- Renamed VRInputReferences.cs class to VRInputContainer.cs
+- Renamed VRTrackerReferences.cs class to VRTrackerContainer.cs
+- Renamed VRInputHandler.cs to VRInputSuite.cs
+- Added input events for all inputs on the input container
+- Added input events for all inputs on the tracker container
+- Changed input reference modifiers from public to private
+- Updated the license
+- Updated all documentation
 
 ## 0.0.3
 

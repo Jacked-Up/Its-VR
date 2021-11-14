@@ -54,17 +54,17 @@ namespace ItsVR_Samples.Locomotion {
             // and snap spin over some time. This makes it easier to spin a lot without
             // flicking the joystick a bunch of times (which can be annoying and tiring).
             if (_frameTick > debounceTime) {
-                if (inputController.inputReference.universalInputs.JoystickPosition.x > 0.5f) {
+                if (inputController.inputContainer.universalInputs.JoystickPosition.x > 0.5f) {
                     _vrRig.RotateRig(turnAngle);
                     inputController.Vibrate(0.15f, 0.075f);
                     _frameTick = 0;
                 }
-                else if (inputController.inputReference.universalInputs.JoystickPosition.x < -0.5f) {
+                else if (inputController.inputContainer.universalInputs.JoystickPosition.x < -0.5f) {
                     _vrRig.RotateRig(-turnAngle);
                     inputController.Vibrate(0.15f, 0.075f);
                     _frameTick = 0;
                 }
-                else if (inputController.inputReference.universalInputs.JoystickPosition.y < -0.5f && canTurnAround) {
+                else if (inputController.inputContainer.universalInputs.JoystickPosition.y < -0.5f && canTurnAround) {
                     _vrRig.RotateRig(180);
                     inputController.Vibrate(0.15f, 0.075f);
                     _frameTick = 0;

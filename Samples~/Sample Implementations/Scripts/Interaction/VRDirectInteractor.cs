@@ -51,11 +51,11 @@ namespace ItsVR_Samples.Interaction {
 
         private void Update() {
             // Bail if the controllers input references is null.
-            if (_controller.inputReference == null) return;
+            if (_controller.inputContainer == null) return;
 
             // Lets grab the interactable if the player depresses the grip and the associated
             // interactable is null.
-            if (_controller.inputReference.universalInputs.GripDepress > 0.65f && associatedInteractable == null) {
+            if (_controller.inputContainer.universalInputs.GripDepress > 0.65f && associatedInteractable == null) {
                 // Lets draw an overlap sphere and fetch all of the colliders inside a sphere.
                 // ReSharper disable once Unity.PreferNonAllocApi
                 var overlaps = Physics.OverlapSphere(attachmentPoint.position, castRadius, interactableMask);
@@ -76,7 +76,7 @@ namespace ItsVR_Samples.Interaction {
             }
             // Lets release the interactable if the player is no longer depressing the grip
             // and the interactable is not null.
-            else if (_controller.inputReference.universalInputs.GripDepress < 0.65f && associatedInteractable != null) {
+            else if (_controller.inputContainer.universalInputs.GripDepress < 0.65f && associatedInteractable != null) {
                 associatedInteractable.Dissociate(this);
                 associatedInteractable = null;
             }

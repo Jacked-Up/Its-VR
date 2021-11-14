@@ -2,7 +2,7 @@
   "name": "com.jacked-up-studios.its-vr",
   "displayName": "It's VR",
   "description": "The best tool for developing virtual reality applications on Unity.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "unity": "2020.3",
   "unityRelease": "0b14",
   "dependencies": {

@@ -1,8 +1,11 @@
-// This script was updated on 11/4/2021 by Jack Randolph.
+// This script was updated on 11/10/2021 by Jack Randolph.
 
 using UnityEngine;
 
 namespace ItsVR.Player {
+    /// <summary>
+    /// Central VR player controller.
+    /// </summary>
     [DisallowMultipleComponent]
     [HelpURL("https://jackedupstudios.com/vr-rig")]
     [AddComponentMenu("It's VR/Player/VR Rig")]
@@ -135,7 +138,7 @@ namespace ItsVR.Player {
         /// Moves the rig to the position.
         /// </summary>
         /// <param name="position">The position to move the rig to.</param>>
-        public void TransformRig(Vector3 position) {
+        public void PositionRig(Vector3 position) {
             if (head == null) {
                 Debug.LogError("[VR Rig] Cannot transform rig because no head object was referenced.", this);
                 return;

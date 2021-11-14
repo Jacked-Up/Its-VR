@@ -51,7 +51,7 @@ namespace ItsVR_Samples.Locomotion {
             if (inputController == null) return;
 
             // Cache the joystick x position.
-            var joystickPositionX = inputController.inputReference.universalInputs.JoystickPosition.x;
+            var joystickPositionX = inputController.inputContainer.universalInputs.JoystickPosition.x;
             
             // This break only ensures that the player is intentionally flicking the joystick.
             if (joystickPositionX < 0.2f && joystickPositionX > -0.2f) return;

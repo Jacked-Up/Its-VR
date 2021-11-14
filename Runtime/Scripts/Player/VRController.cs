@@ -1,9 +1,12 @@
-// This script was updated on 11/4/2021 by Jack Randolph.
+// This script was updated on 11/14/2021 by Jack Randolph.
 
 using ItsVR.Scriptables;
 using UnityEngine;
 
 namespace ItsVR.Player {
+    /// <summary>
+    /// Central VR player controller system.
+    /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(VRTracker))]
     [HelpURL("https://jackedupstudios.com/vr-controller")]
@@ -15,7 +18,7 @@ namespace ItsVR.Player {
         /// The input reference which contains all the VR input bindings for the controller.
         /// </summary>
         [Tooltip("The input reference which contains all the VR input bindings for the controller.")]
-        public VRInputReferences inputReference;
+        public VRInputContainer inputContainer;
 
         /// <summary>
         /// The hand side this controller is. This can be automatically set by naming the object either 'left hand' or 'right hand'.
@@ -23,33 +26,42 @@ namespace ItsVR.Player {
         [Tooltip("The hand side this controller is. This can be automatically set by naming the object either 'left hand' or 'right hand'.")]
         public Hand handSide;
         
-        private VRTracker _tracker;
+        /// <summary>
+        /// The connected tracker.
+        /// </summary>
+        [HideInInspector]
+        public VRTracker connectedTracker;
         
         #endregion
 
         private void OnEnable() {
-            if (inputReference == null)
+            if (inputContainer == null)
                 Debug.LogWarning("[VR Controller] Input reference bindings were not referenced. It is not required but is recommended.", this);
             
-            if (_tracker == null)
-                _tracker = GetComponent<VRTracker>();
+            if (connectedTracker == null)
+                connectedTracker = GetComponent<VRTracker>();
         }
 
         /// <summary>
-        /// Vibrates this controller at the amplitude for the duration.
+        /// Vibrates the controller at the amplitude for the duration.
         /// </summary>
         /// <param name="amplitude">The power setting of the haptic motor. Amplitude value is between 0-1.</param>
         /// <param name="duration">How long the haptic device vibrates.</param>
         public void Vibrate(float amplitude, float duration) {
+            if (inputContainer == null) {
+                Debug.LogError("[VR Controller] You cannot vibrate the controller without an input reference.", this);
+                return;
+            }
+            
             if (amplitude <= 0f) {
-                Debug.LogWarning("[VR Controller] You attempted to vibrated the controller with an amplitude of zero.");
+                Debug.LogWarning("[VR Controller] You attempted to vibrated the controller with an amplitude of zero.", this);
                 return;
             }
             
             if (amplitude > 1f)
                 amplitude = 1f;
 
-            inputReference.universalInputs?.SendImpulse(amplitude, duration);
+            inputContainer.universalInputs?.SendImpulse(amplitude, duration);
         }
 
         #region Editor

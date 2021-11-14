@@ -1,10 +1,13 @@
-// This script was updated on 11/4/2021 by Jack Randolph.
+// This script was updated on 11/10/2021 by Jack Randolph.
 
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace ItsVR.Interaction {
+    /// <summary>
+    /// Base class for interactable objects.
+    /// </summary>
     [HelpURL("https://jackedupstudios.com/vr-interactable")]
     public class VRInteractable : MonoBehaviour {
         #region Variables

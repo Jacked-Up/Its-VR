@@ -1,16 +1,21 @@
-// This script was updated on 11/7/2021 by Jack Randolph.
+// This script was updated on 11/11/2021 by Jack Randolph.
 
+using System;
 using System.Collections.Generic;
 using ItsVR.Player;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace ItsVR {
+    /// <summary>
+    /// It's VR systems. 
+    /// </summary>
     [HelpURL("https://jackedupstudios.com/its-vr-documentation-1#b47abff1-8a0b-4eb6-b03c-3617ba2beb61")]
-    public static class ItsVR {
+    public static class ItsSystems {
         #region Variables
 
         /// <summary>
-        /// The player VR Rig in the scene.
+        /// The players VR Rig in the scene.
         /// </summary>
         public static VRRig Rig {
             get {
@@ -104,7 +109,7 @@ namespace ItsVR {
                 var dominateControllers = new List<VRController>();
                 
                 foreach (var controller in controllers) {
-                    if (controller.handSide != dominateHand) continue;
+                    if (controller.handSide != DominateHand) continue;
                     dominateControllers.Add(controller);
                     break;
                 }
@@ -122,16 +127,16 @@ namespace ItsVR {
         }
         
         /// <summary>
-        /// The users dominate hand. (Defaults as right hand).
+        /// The users dominate hand. (Defaults right hand).
         /// </summary>
-        public static Hand dominateHand = Hand.Right;
+        public static Hand DominateHand = Hand.Right;
 
         /// <summary>
         /// Invoked when the player dominate hand is changed.
         /// </summary>
-        public static event ItsVRPlayerSettingsEvent DominateHandChanged;
+        public static event ItsSystemsEvent DominateHandChanged;
 
-        public delegate void ItsVRPlayerSettingsEvent(Hand hand);
+        public delegate void ItsSystemsEvent(Hand hand);
 
         #endregion
         
@@ -140,9 +145,9 @@ namespace ItsVR {
         /// </summary>
         /// <param name="newHand">Hand side to set as the dominate hand.</param>
         public static void SetDominateHand(Hand newHand) {
-            if (newHand == dominateHand) return;
+            if (newHand == DominateHand) return;
             
-            dominateHand = newHand;
+            DominateHand = newHand;
             DominateHandChanged?.Invoke(newHand);
         }
     }

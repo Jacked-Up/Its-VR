@@ -1,10 +1,12 @@
-// This script was updated on 11/4/2021 by Jack Randolph.
+// This script was updated on 11/14/2021 by Jack Randolph.
 
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ItsVR.Player {
+    /// <summary>
+    /// Copies the real-world trackers position and rotation into the virtual world.
+    /// </summary>
     [DisallowMultipleComponent]
     [HelpURL("https://jackedupstudios.com/vr-tracker")]
     [AddComponentMenu("It's VR/Player/VR Tracker")]
@@ -12,10 +14,10 @@ namespace ItsVR.Player {
         #region Variables
 
         /// <summary>
-        /// Tracker reference which contains the position and rotation bindings of the tracker.
+        /// Tracker container which contains the input bindings of the tracker.
         /// </summary>
-        [Tooltip("Tracker reference which contains the position and rotation bindings of the tracker.")]
-        public Scriptables.VRTrackerReferences trackerReference;
+        [Tooltip("Tracker container which contains the input bindings of the tracker.")]
+        public Scriptables.VRTrackerContainer trackerContainer;
 
         /// <summary>
         /// Movement constraints of the object.
@@ -44,7 +46,7 @@ namespace ItsVR.Player {
         /// <summary>
         /// If the tracker is being tracked. 
         /// </summary>
-        public bool IsTracking => trackerReference != null && trackerReference.IsTracking;
+        public bool IsTracking => trackerContainer != null && trackerContainer.IsTracking;
 
         /// <summary>
         /// If the tracker is paused.
@@ -54,34 +56,32 @@ namespace ItsVR.Player {
         /// <summary>
         /// The speed of the tracker in world space.
         /// </summary>
-        public float WorldSpeed => (transform.position - _lastWorldPosition).magnitude / Time.deltaTime;
+        public float WorldSpeed => ItsMath.Velocity(transform.position, _lastWorldPosition).magnitude;
         
         /// <summary>
         /// The speed of the tracker in local space.
         /// </summary>
-        public float LocalSpeed => (transform.localPosition - _lastLocalPosition).magnitude / Time.deltaTime;
+        public float LocalSpeed => ItsMath.Velocity(transform.localPosition, _lastLocalPosition).magnitude;
         
         /// <summary>
         /// The velocity of the tracker in world space.
         /// </summary>
-        public Vector3 WorldVelocity => (transform.position - _lastWorldPosition) / Time.deltaTime;
+        public Vector3 WorldVelocity => ItsMath.Velocity(transform.position, _lastWorldPosition);
 
         /// <summary>
         /// The velocity of the tracker in local space.
         /// </summary>
-        public Vector3 LocalVelocity => (transform.localPosition - _lastLocalPosition) / Time.deltaTime;
+        public Vector3 LocalVelocity => ItsMath.Velocity(transform.localPosition, _lastLocalPosition);
         
         /// <summary>
         /// The angular velocity of the tracker in world space.
         /// </summary>
-        [Obsolete]
-        public Vector3 WorldAngularVelocity => (transform.rotation.eulerAngles - _lastWorldRotation.eulerAngles) / Time.deltaTime;
+        public Vector3 WorldAngularVelocity => ItsMath.AngularVelocity(transform.rotation, _lastWorldRotation);
 
         /// <summary>
         /// The angular velocity of the tracker in local space.
         /// </summary>
-        [Obsolete]
-        public Vector3 LocalAngularVelocity => (transform.localRotation.eulerAngles - _lastLocalRotation.eulerAngles) / Time.deltaTime;
+        public Vector3 LocalAngularVelocity => ItsMath.AngularVelocity(transform.localRotation, _lastLocalRotation);
         
         /// <summary>
         /// Invoked when the tracker is paused.
@@ -109,7 +109,7 @@ namespace ItsVR.Player {
         #endregion
         
         private void OnEnable() {
-            if (trackerReference == null) 
+            if (trackerContainer == null) 
                 Debug.LogError("[VR Tracker] No tracker reference was referenced.", this);
 
             if (updateMode == UpdateModes.BeforeRender || updateMode == UpdateModes.UpdateAndBeforeRender)
@@ -119,8 +119,8 @@ namespace ItsVR.Player {
         private void OnDisable() {
             InputSystem.onAfterUpdate -= Track;
             
-            if (trackerReference != null)
-                trackerReference.DisableInputs();
+            if (trackerContainer != null)
+                trackerContainer.DisableInputs();
         }
 
         private void Update() {
@@ -128,7 +128,7 @@ namespace ItsVR.Player {
                 Track();
         }
 
-        private void LateUpdate() {
+        private void FixedUpdate() {
             var self = transform;
             _lastWorldPosition = self.position;
             _lastLocalPosition = self.localPosition;
@@ -140,15 +140,15 @@ namespace ItsVR.Player {
         /// Syncs the objects position and rotation with the trackers position and rotation.
         /// </summary>
         public void Track() {
-            if (trackerReference == null || !IsTracking || IsPaused) return;
+            if (trackerContainer == null || !IsTracking || IsPaused) return;
             
             var self = transform;
             
             if (trackingConstraint == TrackingConstraints.PositionOnly || trackingConstraint == TrackingConstraints.PositionAndRotation)
-                self.localPosition = trackerReference.TrackerPosition + positionOffset;
+                self.localPosition = trackerContainer.TrackerPosition + positionOffset;
             
             if (trackingConstraint == TrackingConstraints.RotationOnly || trackingConstraint == TrackingConstraints.PositionAndRotation)
-                self.localRotation = Quaternion.Euler(trackerReference.TrackerRotation.eulerAngles + rotationOffset.eulerAngles);
+                self.localRotation = Quaternion.Euler(trackerContainer.TrackerRotation.eulerAngles + rotationOffset.eulerAngles);
             
             TrackerUpdated?.Invoke();
         }

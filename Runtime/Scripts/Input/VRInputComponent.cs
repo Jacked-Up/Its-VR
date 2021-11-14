@@ -1,11 +1,14 @@
-// This script was updated on 11/4/2021 by Jack Randolph.
+// This script was updated on 11/13/2021 by Jack Randolph.
 
 using ItsVR.Scriptables;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace ItsVR.Input {
+    /// <summary>
+    /// Contains unity events for all universal inputs.
+    /// </summary>
     [DisallowMultipleComponent]
     [HelpURL("https://jackedupstudios.com/vr-input-component")]
     [AddComponentMenu("It's VR/Input/VR Input Component")]
@@ -15,8 +18,8 @@ namespace ItsVR.Input {
         /// <summary>
         /// Input reference bindings this script will listen to.
         /// </summary>
-        [Tooltip("Input reference bindings this script will listen to.")]
-        public VRInputReferences inputReference;
+        [FormerlySerializedAs("inputReference")] [Tooltip("Input reference bindings this script will listen to.")]
+        public VRInputContainer inputContainer;
 
         /// <summary>
         /// All of the input reference unity events.
@@ -30,22 +33,24 @@ namespace ItsVR.Input {
         #endregion
 
         private void OnEnable() {
-            if (inputReference == null) 
-                Debug.LogError("[VR Input Component] No VR Input Reference was referenced.", this);
+            if (inputContainer == null) {
+                Debug.LogError("[VR Input Component] No VR input container was referenced.", this);
+                return;
+            }
             
             // Prevent the script from subscribing to the events more than once. 
             // This just saves some resources.
             if (_alreadySubscribedToInputEvents) return;
             _alreadySubscribedToInputEvents = true;
             
-            inputReference.universalInputs.triggerPressed.performed += TriggerPressed;
-            inputReference.universalInputs.gripPressed.performed += GripPressed;
-            inputReference.universalInputs.joystickPressed.performed += JoystickPressed;
-            inputReference.universalInputs.joystickTouched.performed += JoystickTouched;
-            inputReference.universalInputs.primaryButtonPressed.performed += PrimaryButtonPressed;
-            inputReference.universalInputs.primaryButtonTouched.performed += PrimaryButtonTouched;
-            inputReference.universalInputs.secondaryButtonPressed.performed += SecondaryButtonPressed;
-            inputReference.universalInputs.secondaryButtonPressed.performed += SecondaryButtonTouched;
+            inputContainer.universalInputs.RegisterEvents();
+            inputContainer.universalInputs.OnTriggerPressed += TriggerPressed;
+            inputContainer.universalInputs.OnGripPressed += GripPressed;
+            inputContainer.universalInputs.OnJoystickPressed += JoystickPressed;
+            inputContainer.universalInputs.OnPrimaryButtonPressed += PrimaryButtonPressed;
+            inputContainer.universalInputs.OnPrimaryButtonTouched += PrimaryButtonTouched;
+            inputContainer.universalInputs.OnSecondaryButtonPressed += SecondaryButtonPressed;
+            inputContainer.universalInputs.OnSecondaryButtonTouched += SecondaryButtonTouched;
         }
 
         private void OnDisable() {
@@ -53,30 +58,30 @@ namespace ItsVR.Input {
         }
 
         private void Update() {
-            // Bail if developer did not reference an input reference.
-            if (inputReference == null) return;
+            // Bail if developer did not reference an input container.
+            if (inputContainer == null) return;
 
             // Joystick input events logic.
             if (_joystickEventAlreadyFired) {
-                if (inputReference.universalInputs.JoystickPosition.y < 0.75f && inputReference.universalInputs.JoystickPosition.y > -0.75f && inputReference.universalInputs.JoystickPosition.x < 0.75f && inputReference.universalInputs.JoystickPosition.x > -0.75f) 
+                if (inputContainer.universalInputs.JoystickPosition.y < 0.75f && inputContainer.universalInputs.JoystickPosition.y > -0.75f && inputContainer.universalInputs.JoystickPosition.x < 0.75f && inputContainer.universalInputs.JoystickPosition.x > -0.75f) 
                     _joystickEventAlreadyFired = false;
                 
                 return;
             }
             
-            if (inputReference.universalInputs.JoystickPosition.y > 0.75f) {
+            if (inputContainer.universalInputs.JoystickPosition.y > 0.75f) {
                 inputEvents.joystick.joystickUp?.Invoke();
                 _joystickEventAlreadyFired = true;
             }
-            else if (inputReference.universalInputs.JoystickPosition.y < -0.75f) {
+            else if (inputContainer.universalInputs.JoystickPosition.y < -0.75f) {
                 inputEvents.joystick.joystickDown?.Invoke();
                 _joystickEventAlreadyFired = true;
             }
-            else if (inputReference.universalInputs.JoystickPosition.x > 0.75f) {
+            else if (inputContainer.universalInputs.JoystickPosition.x > 0.75f) {
                 inputEvents.joystick.joystickRight?.Invoke();
                 _joystickEventAlreadyFired = true;
             }
-            else if (inputReference.universalInputs.JoystickPosition.x < -0.75f) {
+            else if (inputContainer.universalInputs.JoystickPosition.x < -0.75f) {
                 inputEvents.joystick.joystickLeft?.Invoke();
                 _joystickEventAlreadyFired = true;
             }
@@ -86,43 +91,43 @@ namespace ItsVR.Input {
         /// Disables all inputs referenced on this script.
         /// </summary>
         public void DisableInputs() {
-            if (inputReference != null) 
-                inputReference.DisableAllInputs();
+            if (inputContainer != null) 
+                inputContainer.DisableAllInputs();
             else 
                 Debug.LogError("[VR Input Component] Cannot disable inputs as no input reference was referenced.", this);
         }
-        
-        private void TriggerPressed(InputAction.CallbackContext callbackContext) {
+
+        #region Input Events
+
+        private void TriggerPressed() {
             inputEvents.trigger.triggerPressed.Invoke();
         }        
         
-        private void GripPressed(InputAction.CallbackContext callbackContext) {
+        private void GripPressed() {
             inputEvents.grip.gripPressed.Invoke();
         }
 
-        private void JoystickPressed(InputAction.CallbackContext callbackContext) {
+        private void JoystickPressed() {
             inputEvents.joystick.joystickPressed.Invoke();
         }
-        
-        private void JoystickTouched(InputAction.CallbackContext callbackContext) {
-            inputEvents.joystick.joystickTouched.Invoke();
-        }
-        
-        private void PrimaryButtonPressed(InputAction.CallbackContext callbackContext) {
+
+        private void PrimaryButtonPressed() {
             inputEvents.primaryButton.primaryButtonPressed.Invoke();
         }
         
-        private void PrimaryButtonTouched(InputAction.CallbackContext callbackContext) {
+        private void PrimaryButtonTouched() {
             inputEvents.primaryButton.primaryButtonTouched.Invoke();
         }
         
-        private void SecondaryButtonPressed(InputAction.CallbackContext callbackContext) {
+        private void SecondaryButtonPressed() {
             inputEvents.secondaryButton.secondaryButtonPressed.Invoke();
         }
         
-        private void SecondaryButtonTouched(InputAction.CallbackContext callbackContext) {
+        private void SecondaryButtonTouched() {
             inputEvents.secondaryButton.secondaryButtonTouched.Invoke();
         }
+
+        #endregion
     }
     
     [System.Serializable]
@@ -183,13 +188,7 @@ namespace ItsVR.Input {
         /// </summary>
         [Tooltip("Invoked when the joystick is pressed down.")]
         public UnityEvent joystickPressed;
-        
-        /// <summary>
-        /// Invoked when the joystick is touched.
-        /// </summary>
-        [Tooltip("Invoked when the joystick is touched.")]
-        public UnityEvent joystickTouched;
-        
+
         /// <summary>
         /// Invoked when the joystick is pushed up.
         /// </summary>

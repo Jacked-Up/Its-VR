@@ -1,8 +1,13 @@
-// This script was updated on 10/26/2021 by Jack Randolph.
+// This script was updated on 11/13/2021 by Jack Randolph.
 
+using ItsVR.Player;
 using UnityEngine;
 
 namespace ItsVR.Interaction {
+    /// <summary>
+    /// Base class for interactor objects.
+    /// </summary>
+    [RequireComponent(typeof(VRController))]
     [HelpURL("https://jackedupstudios.com/vr-interactor")]
     public class VRInteractor : MonoBehaviour {
         #region Variables
@@ -19,6 +24,19 @@ namespace ItsVR.Interaction {
         [HideInInspector]
         public VRInteractable associatedInteractable;
 
+        /// <summary>
+        /// The VR controller which is connected to this interactor.
+        /// </summary>
+        public VRController ConnectedController {
+            get {
+                if (_controllerCache == null)
+                    _controllerCache = GetComponent<VRController>();
+
+                return _controllerCache;
+            }
+        }
+        private VRController _controllerCache;
+        
         /// <summary>
         /// Invoked when the interactor is associated.
         /// </summary>
