@@ -1,0 +1,389 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e97e8f4388a664ab6403400fce5b0d, type: 3}
+  m_Name: Left Controller Inputs
+  m_EditorClassIdentifier: 
+  universal:
+    triggerDepress:
+      m_Name: Trigger Depress
+      m_Type: 0
+      m_ExpectedControlType: Analog
+      m_Id: d9d66cd2-502d-41ca-83ea-6cc7f5209069
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 4877f231-a842-4a24-81c1-1f1ed578778f
+        m_Path: <XRController>{LeftHand}/trigger
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trigger Depress
+        m_Flags: 0
+    triggerPressed:
+      m_Name: Trigger Pressed
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 5118d1bc-deab-4d04-b11b-8cef316d8470
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: e9115543-9a5b-4dba-9293-2d9414c17a58
+        m_Path: <XRController>{LeftHand}/triggerPressed
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trigger Pressed
+        m_Flags: 0
+    gripDepress:
+      m_Name: Grip Depress
+      m_Type: 0
+      m_ExpectedControlType: Analog
+      m_Id: ec6baacd-7f33-45ae-97e4-470dc8de9ee8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 87435b5f-93a7-40de-9ac8-5ae792bf846e
+        m_Path: <XRController>{LeftHand}/grip
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Grip Depress
+        m_Flags: 0
+    gripPressed:
+      m_Name: Grip Pressed
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 6877f6cb-85b3-4948-9f6f-6fc293e00ab5
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: ffdac86e-34cb-4f0c-8c89-1ee009153011
+        m_Path: <XRController>{LeftHand}/gripPressed
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Grip Pressed
+        m_Flags: 0
+    joystickPosition:
+      m_Name: Joystick Position
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 5baa7c8a-a496-4d9b-8263-5531ba164c4f
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 33b4d94c-cd1c-432a-b351-0b2ecffca16e
+        m_Path: <XRController>{LeftHand}/thumbstick
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Joystick Position
+        m_Flags: 0
+    joystickPressed:
+      m_Name: Joystick Pressed
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 3d99f16c-02f3-434d-bdb8-39a6d1d8a7e5
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: e12103ec-6870-4dfb-b9b3-ca8f9585fe43
+        m_Path: <XRController>{LeftHand}/thumbstickClicked
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Joystick Pressed
+        m_Flags: 0
+    primaryButtonPressed:
+      m_Name: Primary Button Pressed
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 405c3bcf-6505-4ecd-857a-5b6e16ec908b
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 15b879ba-6a21-4537-a39a-a301fd18e26a
+        m_Path: <XRController>{LeftHand}/primaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Primary Button Pressed
+        m_Flags: 0
+    primaryButtonTouched:
+      m_Name: Primary Button Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 02de3c3e-dfa6-4cc9-a92c-a89be0a96ac0
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 86a2bce7-4b2c-4717-8222-1c41bf0148dd
+        m_Path: <XRController>{LeftHand}/primaryTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Primary Button Touched
+        m_Flags: 0
+    secondaryButtonPressed:
+      m_Name: Secondary Button Pressed
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: b8436c9f-b4ed-4516-b6ae-0dfdc0a89a52
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: a07a8ff6-82eb-436a-8a85-bbd4b82cab84
+        m_Path: <XRController>{LeftHand}/secondaryButton
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Secondary Button Pressed
+        m_Flags: 0
+    secondaryButtonTouched:
+      m_Name: Secondary Button Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 4bddd691-1962-4cd3-97d9-8ca9d809a9b1
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 24447d43-f9eb-4257-9f1f-98153c38f644
+        m_Path: <XRController>{LeftHand}/secondaryTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Secondary Button Touched
+        m_Flags: 0
+    haptics:
+      m_Name: Haptics
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: a6ecac21-55f1-4d8a-b31b-e93cba3dcab0
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: c0622d7d-73dc-474f-b054-a7cf98d900d2
+        m_Path: <XRController>{LeftHand}/*
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Haptics
+        m_Flags: 0
+  system:
+    systemPressed:
+      m_Name: System Pressed
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: c3a9de09-a716-436a-a317-3b81bc5d79b5
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 644f6cad-566f-47d9-83f5-d62aaea500d0
+        m_Path: <XRController>{LeftHand}/system
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: System Pressed
+        m_Flags: 0
+  meta:
+    triggerTouched:
+      m_Name: Trigger Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: e77e1bf3-0b71-49cc-8034-5bbe3887b9bf
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 43b5df92-7275-4ccd-82c3-2416be0948bf
+        m_Path: <OculusTouchController>{LeftHand}/triggerTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trigger Touched
+        m_Flags: 0
+    joystickTouched:
+      m_Name: Joystick Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: f8f6d7e6-8e2c-4dd4-aa24-bd8690c4797a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 7db654f1-1628-4039-b96b-5df674c1ec30
+        m_Path: <OculusTouchController>{LeftHand}/thumbstickTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Joystick Touched
+        m_Flags: 0
+  vive:
+    trackpadPosition:
+      m_Name: Trackpad Position
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 1b264e01-291b-478a-bb0d-c646aa7cfef1
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: aab1cafa-a550-43da-914b-377cc1301ddb
+        m_Path: <ViveController>{LeftHand}/trackpad
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trackpad Position
+        m_Flags: 0
+    trackpadPressed:
+      m_Name: Trackpad Pressed
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 3da3ebed-31a4-4dbb-a0e6-26005c33687d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: bc97d718-2c2c-45fc-99c5-790ee3a1e5f2
+        m_Path: <ViveController>{LeftHand}/trackpadClicked
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trackpad Pressed
+        m_Flags: 0
+    trackpadTouched:
+      m_Name: Trackpad Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 261116d7-a4c1-4d96-9bde-348dbe48169a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: d39a0051-6d16-448f-8017-e42ad47039c5
+        m_Path: <ViveController>{LeftHand}/trackpadTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trackpad Touched
+        m_Flags: 0
+  valve:
+    gripForce:
+      m_Name: Grip Force
+      m_Type: 0
+      m_ExpectedControlType: Analog
+      m_Id: 1af9a636-a46c-456a-b9cd-58751cce5fef
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 1a76139f-133f-4eae-bb1e-702062dd327f
+        m_Path: <ValveIndexController>{LeftHand}/gripForce
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Grip Force
+        m_Flags: 0
+    trackpadPosition:
+      m_Name: Trackpad Position
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: e8a425ab-14cb-4fe3-9a65-b4cdf292f5c1
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: a80e6c45-1e4b-4ee9-ab84-74a4888adf86
+        m_Path: <ValveIndexController>{LeftHand}/trackpad
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trackpad Position
+        m_Flags: 0
+    trackpadTouched:
+      m_Name: Trackpad Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 3edfccdf-de34-4d07-b8fb-d7ea4c09c12d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: d3a25a25-377d-4010-80a2-a9decfb446ce
+        m_Path: <ValveIndexController>{LeftHand}/trackpadTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trackpad Touched
+        m_Flags: 0
+    trackpadForce:
+      m_Name: Trackpad Force
+      m_Type: 0
+      m_ExpectedControlType: Analog
+      m_Id: 30dffe24-2905-4897-b545-f51ceb60062d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: eec51588-1711-4a76-90f4-71ce3d08c5e8
+        m_Path: <ValveIndexController>{LeftHand}/trackpadForce
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trackpad Force
+        m_Flags: 0
+    triggerTouched:
+      m_Name: Trigger Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: da824a96-682f-4c3b-840c-9ffb3de489f8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 3a279a41-f874-46f1-a8e2-1d4f38904ab5
+        m_Path: <ValveIndexController>{LeftHand}/triggerTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Trigger Touched
+        m_Flags: 0
+    joystickTouched:
+      m_Name: Joystick Touched
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: d2c462f6-fca6-4615-b136-9f68b207bc7d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 84be355e-3094-48f4-b54a-5a846519eaa4
+        m_Path: <ValveIndexController>{LeftHand}/thumbstickTouched
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Joystick Touched
+        m_Flags: 0
+  registerOnLoad: 1
+  preventUnregisters: 0
